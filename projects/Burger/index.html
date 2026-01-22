@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BurgerCraft - Crafted Burgers, Delivered Fresh</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header" id="header">
+      <nav class="nav container">
+        <div class="nav__logo">
+          <h2>🍔 BurgerCraft</h2>
+        </div>
+        <ul class="nav__menu" id="nav-menu">
+          <li class="nav__item">
+            <a href="#home" class="nav__link">Home</a>
+          </li>
+          <li class="nav__item">
+            <a href="#menu" class="nav__link">Menu</a>
+          </li>
+          <li class="nav__item">
+            <a href="#about" class="nav__link">About</a>
+          </li>
+          <li class="nav__item">
+            <a href="#contact" class="nav__link">Contact</a>
+          </li>
+        </ul>
+        <div class="nav__right">
+          <span class="nav__phone">📞 (555) 123-BURGER</span>
+          <div class="cart-icon" id="cart-icon">
+            🛒 <span class="cart-count" id="cart-count">0</span>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero__container container">
+        <div class="hero__content">
+          <h1 class="hero__title">
+            <span class="hero__title-line">Crafted Burgers,</span>
+            <span class="hero__title-line">Delivered Fresh</span>
+          </h1>
+          <p class="hero__subtitle">
+            Experience the perfect blend of premium ingredients and masterful
+            craftsmanship in every bite
+          </p>
+          <button
+            class="btn btn--primary hero__cta"
+            onclick="scrollToSection('menu')"
+          >
+            Order Now
+            <span class="btn__ripple"></span>
+          </button>
+          <div class="hero__stats">
+            <div class="stat">
+              <span class="stat__number">50k+</span>
+              <span class="stat__label">Happy Customers</span>
+            </div>
+            <div class="stat">
+              <span class="stat__number">30min</span>
+              <span class="stat__label">Delivery Time</span>
+            </div>
+            <div class="stat">
+              <span class="stat__number">4.9★</span>
+              <span class="stat__label">Average Rating</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero__image">
+          <img
+            src="burger-with-cheese-lettuce-tomato-and-onion-free-png.png"
+            alt="Delicious Burger"
+            class="hero__burger"
+          />
+          <div class="floating-ingredient ingredient-1">🥬</div>
+          <div class="floating-ingredient ingredient-2">🍅</div>
+          <div class="floating-ingredient ingredient-3">🧀</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Burgers Section -->
+    <section class="featured" id="menu">
+      <div class="container">
+        <h2 class="section__title">Featured Burgers</h2>
+        <div class="featured__grid" id="featured-grid">
+          <!-- Burger cards will be populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Categories -->
+    <section class="menu-categories">
+      <div class="container">
+        <div class="menu__tabs">
+          <button class="menu__tab active" data-category="burgers">
+            Burgers
+          </button>
+          <button class="menu__tab" data-category="sides">Sides</button>
+          <button class="menu__tab" data-category="drinks">Drinks</button>
+        </div>
+        <div class="menu__content" id="menu-content">
+          <!-- Menu items will be populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="features" id="about">
+      <div class="container">
+        <h2 class="section__title">Why Choose BurgerCraft?</h2>
+        <div class="features__grid">
+          <div class="feature">
+            <div class="feature__icon">🥩</div>
+            <h3 class="feature__title">Fresh Ingredients</h3>
+            <p class="feature__description">
+              We use only the freshest, locally-sourced ingredients in all our
+              burgers
+            </p>
+          </div>
+          <div class="feature">
+            <div class="feature__icon">🚚</div>
+            <h3 class="feature__title">Fast Delivery</h3>
+            <p class="feature__description">
+              Hot, fresh burgers delivered to your door in 30 minutes or less
+            </p>
+          </div>
+          <div class="feature">
+            <div class="feature__icon">⭐</div>
+            <h3 class="feature__title">Premium Quality</h3>
+            <p class="feature__description">
+              Hand-crafted burgers made by experienced chefs with premium
+              ingredients
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section class="testimonials">
+      <div class="container">
+        <h2 class="section__title">What Our Customers Say</h2>
+        <div class="testimonials__container">
+          <div class="testimonial active">
+            <div class="testimonial__rating">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial__text">
+              "Best burgers in town! The BBQ Bacon Burger is absolutely amazing.
+              Fast delivery too!"
+            </p>
+            <div class="testimonial__author">
+              <strong>Sarah Johnson</strong>
+              <span>Downtown</span>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="testimonial__rating">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial__text">
+              "Love the variety and quality. The veggie burger is surprisingly
+              delicious even for a meat lover like me."
+            </p>
+            <div class="testimonial__author">
+              <strong>Mike Chen</strong>
+              <span>Westside</span>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="testimonial__rating">⭐⭐⭐⭐</div>
+            <p class="testimonial__text">
+              "Great service and the burgers arrive hot and fresh. The
+              customization options are perfect."
+            </p>
+            <div class="testimonial__author">
+              <strong>Emma Davis</strong>
+              <span>North Hills</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+      <div class="container">
+        <div class="newsletter__content">
+          <h3>Get 10% off your first order!</h3>
+          <p>Subscribe to our newsletter and receive exclusive deals</p>
+          <form class="newsletter__form" id="newsletter-form">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              class="newsletter__input"
+              required
+            />
+            <button type="submit" class="btn btn--primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="footer__content">
+          <div class="footer__section">
+            <h4>🍔 BurgerCraft</h4>
+            <p>Crafting the perfect burger experience since 2020</p>
+            <div class="footer__social">
+              <a href="#" target="_blank">📘</a>
+              <a href="#" target="_blank">📷</a>
+              <a href="#" target="_blank">🐦</a>
+            </div>
+          </div>
+          <div class="footer__section">
+            <h4>Contact Info</h4>
+            <p>📞 (555) 123-BURGER</p>
+            <p>📧 hello@burgercraft.com</p>
+            <p>📍 123 Food Street, City, State 12345</p>
+          </div>
+          <div class="footer__section">
+            <h4>Hours</h4>
+            <p>Monday - Friday: 11am - 10pm</p>
+            <p>Saturday - Sunday: 10am - 11pm</p>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>&copy; 2024 BurgerCraft. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+      <div class="cart-sidebar__header">
+        <h3>Your Order</h3>
+        <button class="cart-sidebar__close" id="cart-close">×</button>
+      </div>
+      <div class="cart-sidebar__content" id="cart-content">
+        <p class="cart-empty">Your cart is empty</p>
+      </div>
+      <div class="cart-sidebar__footer">
+        <div class="cart-total">
+          <span>Total: $<span id="cart-total">0.00</span></span>
+        </div>
+        <button
+          class="btn btn--primary btn--full-width"
+          id="checkout-btn"
+          disabled
+        >
+          Proceed to Checkout
+        </button>
+      </div>
+    </div>
+
+    <!-- Burger Modal -->
+    <div class="modal" id="burger-modal">
+      <div class="modal__overlay" id="modal-overlay"></div>
+      <div class="modal__content">
+        <button class="modal__close" id="modal-close">×</button>
+        <div class="modal__body" id="modal-body">
+          <!-- Modal content will be populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkout-modal">
+      <div class="modal__overlay" id="checkout-overlay"></div>
+      <div class="modal__content">
+        <button class="modal__close" id="checkout-modal-close">×</button>
+        <div class="checkout__content">
+          <h3>Checkout</h3>
+          <form class="checkout__form" id="checkout-form">
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Delivery Address</label>
+              <textarea class="form-control" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Payment Method</label>
+              <select class="form-control" required>
+                <option value="">Select payment method</option>
+                <option value="credit">Credit Card</option>
+                <option value="paypal">PayPal</option>
+                <option value="cash">Cash on Delivery</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn--primary btn--full-width">
+              Place Order ($<span id="checkout-total">0.00</span>)
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+      <div class="spinner"></div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
