@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -27,6 +27,9 @@
             <a href="#menu" class="nav__link">Menu</a>
           </li>
           <li class="nav__item">
+            <a href="#build" class="nav__link">Build Yours</a>
+          </li>
+          <li class="nav__item">
             <a href="#about" class="nav__link">About</a>
           </li>
           <li class="nav__item">
@@ -34,7 +37,7 @@
           </li>
         </ul>
         <div class="nav__right">
-          <span class="nav__phone">📞 (555) 123-BURGER</span>
+          <span class="nav__phone">📞 9876543210</span>
           <div class="cart-icon" id="cart-icon">
             🛒 <span class="cart-count" id="cart-count">0</span>
           </div>
@@ -99,6 +102,39 @@
       </div>
     </section>
 
+    <!-- Build Your Own Burger -->
+    <section class="builder" id="build">
+      <div class="container">
+        <h2 class="section__title">Build Your Own Burger</h2>
+        <p class="builder__subtitle">
+          Stack your dream burger layer by layer. Premium ingredients add a
+          little extra to the price, watch the total update live.
+        </p>
+        <div class="builder__layout">
+          <div class="builder__visual">
+            <div class="burger-stack" id="burger-stack">
+              <div class="burger-stack__bun-top" id="bun-top"></div>
+              <div class="burger-stack__layers" id="burger-stack-layers"></div>
+              <div class="burger-stack__bun-bottom" id="bun-bottom"></div>
+            </div>
+            <div class="builder__price-tag">
+              <span>Total</span>
+              <span class="builder__price" id="builder-price">$0.00</span>
+            </div>
+            <button
+              class="btn btn--primary btn--full-width"
+              id="builder-add-btn"
+            >
+              Add Custom Burger to Cart
+            </button>
+          </div>
+          <div class="builder__options" id="builder-options">
+            <!-- Populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Menu Categories -->
     <section class="menu-categories">
       <div class="container">
@@ -159,7 +195,7 @@
               Fast delivery too!"
             </p>
             <div class="testimonial__author">
-              <strong>Sarah Johnson</strong>
+              <strong>Abhay Tripathi</strong>
               <span>Downtown</span>
             </div>
           </div>
@@ -170,7 +206,7 @@
               delicious even for a meat lover like me."
             </p>
             <div class="testimonial__author">
-              <strong>Mike Chen</strong>
+              <strong>Shivam</strong>
               <span>Westside</span>
             </div>
           </div>
@@ -181,8 +217,8 @@
               customization options are perfect."
             </p>
             <div class="testimonial__author">
-              <strong>Emma Davis</strong>
-              <span>North Hills</span>
+              <strong>Aakash</strong>
+              <span>EastSide</span>
             </div>
           </div>
         </div>
@@ -223,14 +259,14 @@
           </div>
           <div class="footer__section">
             <h4>Contact Info</h4>
-            <p>📞 (555) 123-BURGER</p>
+            <p>📞 987654321</p>
             <p>📧 hello@burgercraft.com</p>
-            <p>📍 123 Food Street, City, State 12345</p>
+            <p>📍 123 Food Street, Delhi, INDIA</p>
           </div>
           <div class="footer__section">
             <h4>Hours</h4>
-            <p>Monday - Friday: 11am - 10pm</p>
-            <p>Saturday - Sunday: 10am - 11pm</p>
+            <p>Monday - Friday: 10am - 10pm</p>
+            <p>Saturday - Sunday: 9am - 11pm</p>
           </div>
         </div>
         <div class="footer__bottom">

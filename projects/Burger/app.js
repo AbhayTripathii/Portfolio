@@ -90,6 +90,93 @@ const burgerData = {
   ]
 };
 
+// Burger Builder Data
+const builderData = {
+  bun: {
+    label: "Choose Your Bun",
+    hint: "pick 1",
+    multi: false,
+    items: [
+      { id: "bun-sesame", name: "Classic Sesame", price: 0 },
+      { id: "bun-wheat", name: "Whole Wheat", price: 0.5 },
+      { id: "bun-brioche", name: "Brioche", price: 1.2, premium: true },
+      { id: "bun-pretzel", name: "Pretzel Bun", price: 1.5, premium: true }
+    ]
+  },
+  patty: {
+    label: "Choose Your Patty",
+    hint: "pick 1",
+    multi: false,
+    items: [
+      { id: "patty-veggie", name: "Plant-Based", emoji: "🥦", price: 3.2, veg: true },
+      { id: "patty-beef", name: "Beef Patty", emoji: "🍖", price: 3.5 },
+      { id: "patty-chicken", name: "Grilled Chicken", emoji: "🍗", price: 3.0 },
+      { id: "patty-double", name: "Double Beef", emoji: "🍖", price: 6.5, premium: true }
+    ]
+  },
+  cheese: {
+    label: "Choose Your Cheese",
+    hint: "pick 1",
+    multi: false,
+    items: [
+      { id: "cheese-none", name: "No Cheese", emoji: "", price: 0, veg: true },
+      { id: "cheese-cheddar", name: "Cheddar", emoji: "🧀", price: 0.75, veg: true },
+      { id: "cheese-swiss", name: "Swiss", emoji: "🧀", price: 0.75, veg: true },
+      { id: "cheese-pepperjack", name: "Pepper Jack", emoji: "🧀", price: 0.85, veg: true },
+      { id: "cheese-blue", name: "Blue Cheese", emoji: "🧀", price: 1.5, premium: true, veg: true }
+    ]
+  },
+  toppings: {
+    label: "Fresh Toppings",
+    hint: "pick any",
+    multi: true,
+    items: [
+      { id: "top-lettuce", name: "Lettuce", emoji: "🥬", price: 0.3, veg: true },
+      { id: "top-tomato", name: "Tomato", emoji: "🍅", price: 0.3, veg: true },
+      { id: "top-onion", name: "Red Onion", emoji: "🧅", price: 0.3, veg: true },
+      { id: "top-pickle", name: "Pickles", emoji: "🥒", price: 0.3, veg: true },
+      { id: "top-jalapeno", name: "Jalapeños", emoji: "🌶️", price: 0.4, veg: true },
+      { id: "top-avocado", name: "Avocado", emoji: "🥑", price: 1.2, premium: true, veg: true }
+    ]
+  },
+  sauces: {
+    label: "Sauces",
+    hint: "pick any",
+    multi: true,
+    items: [
+      { id: "sauce-ketchup", name: "Ketchup", emoji: "🔴", price: 0.2, veg: true },
+      { id: "sauce-mustard", name: "Mustard", emoji: "🟡", price: 0.2, veg: true },
+      { id: "sauce-mayo", name: "Mayo", emoji: "⚪", price: 0.2, veg: true },
+      { id: "sauce-bbq", name: "BBQ Sauce", emoji: "🟤", price: 0.3, veg: true },
+      { id: "sauce-special", name: "Chef's Special Sauce", emoji: "✨", price: 0.6, premium: true, veg: true }
+    ]
+  },
+  extras: {
+    label: "Premium Extras",
+    hint: "pick any",
+    multi: true,
+    items: [
+      { id: "extra-onionrings", name: "Onion Rings", emoji: "🧅", price: 1.2, premium: true, veg: true },
+      { id: "extra-bacon", name: "Crispy Bacon", emoji: "🥓", price: 1.5, premium: true },
+      { id: "extra-egg", name: "Fried Egg", emoji: "🍳", price: 1.3, premium: true },
+      { id: "extra-patty", name: "Extra Patty", emoji: "🍖", price: 3.5, premium: true }
+    ]
+  }
+};
+
+// Layer stacking order: lower rank sits closer to the top bun
+const LAYER_RANK = { extras: 0, sauces: 1, toppings: 2, cheese: 3, patty: 4 };
+
+// Start with an all-vegetarian build by default
+const builderState = {
+  bun: "bun-sesame",
+  patty: "patty-veggie",
+  cheese: "cheese-none",
+  toppings: [],
+  sauces: [],
+  extras: []
+};
+
 // Application State
 let cart = [];
 let currentTestimonial = 0;
@@ -325,6 +412,255 @@ function addToCartById(itemId, category) {
   }
 }
 
+// Burger Builder Functions
+function findBuilderItem(categoryKey, itemId) {
+  return builderData[categoryKey].items.find((item) => item.id === itemId);
+}
+
+function calculateBuilderTotal() {
+  let total = 0;
+
+  total += findBuilderItem("bun", builderState.bun)?.price || 0;
+  total += findBuilderItem("patty", builderState.patty)?.price || 0;
+  total += findBuilderItem("cheese", builderState.cheese)?.price || 0;
+
+  ["toppings", "sauces", "extras"].forEach((categoryKey) => {
+    builderState[categoryKey].forEach((itemId) => {
+      total += findBuilderItem(categoryKey, itemId)?.price || 0;
+    });
+  });
+
+  return total;
+}
+
+function isBuilderItemSelected(categoryKey, itemId) {
+  const category = builderData[categoryKey];
+  return category.multi
+    ? builderState[categoryKey].includes(itemId)
+    : builderState[categoryKey] === itemId;
+}
+
+// Insert a single new layer in the stack, keeping every previously
+// added layer exactly where it is (only the new piece animates in).
+function insertLayerNode(categoryKey, item) {
+  const container = document.getElementById("burger-stack-layers");
+  if (!container || !item || !item.emoji) return;
+
+  const rank = LAYER_RANK[categoryKey];
+  const node = document.createElement("div");
+  node.className = "burger-stack__layer";
+  node.dataset.key = `${categoryKey}:${item.id}`;
+  node.dataset.category = categoryKey;
+  node.dataset.rank = String(rank);
+  node.title = item.name;
+  node.textContent = item.emoji;
+
+  let referenceNode = null;
+  for (const child of container.children) {
+    if (Number(child.dataset.rank) > rank) {
+      referenceNode = child;
+      break;
+    }
+  }
+
+  if (referenceNode) {
+    container.insertBefore(node, referenceNode);
+  } else {
+    container.appendChild(node);
+  }
+}
+
+// Remove one specific layer (used for multi-select toppings/sauces/extras)
+function removeLayerNode(categoryKey, itemId) {
+  const container = document.getElementById("burger-stack-layers");
+  if (!container) return;
+  const node = container.querySelector(
+    `[data-key="${categoryKey}:${itemId}"]`
+  );
+  if (!node) return;
+  node.classList.add("burger-stack__layer--removing");
+  node.addEventListener("animationend", () => node.remove(), { once: true });
+}
+
+// Remove whichever layer currently belongs to a single-select category
+// (used when swapping patty or cheese for a different choice)
+function removeLayerByCategory(categoryKey) {
+  const container = document.getElementById("burger-stack-layers");
+  if (!container) return;
+  const node = container.querySelector(`[data-category="${categoryKey}"]`);
+  if (!node) return;
+  node.classList.add("burger-stack__layer--removing");
+  node.addEventListener("animationend", () => node.remove(), { once: true });
+}
+
+function updateBunVisual() {
+  const bunTop = document.getElementById("bun-top");
+  const bunBottom = document.getElementById("bun-bottom");
+  if (!bunTop || !bunBottom) return;
+
+  const bunClasses = builderData.bun.items.map((item) => `bun--${item.id}`);
+  [bunTop, bunBottom].forEach((el) => {
+    el.classList.remove(...bunClasses);
+    el.classList.add(`bun--${builderState.bun}`);
+  });
+}
+
+function toggleBuilderSelection(categoryKey, itemId) {
+  const category = builderData[categoryKey];
+  const item = findBuilderItem(categoryKey, itemId);
+
+  if (category.multi) {
+    const index = builderState[categoryKey].indexOf(itemId);
+    if (index > -1) {
+      builderState[categoryKey].splice(index, 1);
+      removeLayerNode(categoryKey, itemId);
+    } else {
+      builderState[categoryKey].push(itemId);
+      insertLayerNode(categoryKey, item);
+    }
+  } else if (categoryKey === "bun") {
+    builderState.bun = itemId;
+    updateBunVisual();
+  } else {
+    // patty / cheese: single layer, swap it out for the new one
+    if (categoryKey === "cheese" && builderState.cheese === itemId) {
+      builderState.cheese = "cheese-none";
+      removeLayerByCategory("cheese");
+    } else {
+      removeLayerByCategory(categoryKey);
+      builderState[categoryKey] = itemId;
+      if (item && item.emoji) {
+        insertLayerNode(categoryKey, item);
+      }
+    }
+  }
+
+  renderBuilderOptions();
+  updateBuilderPrice();
+}
+
+function renderBuilderOptions() {
+  const container = document.getElementById("builder-options");
+  if (!container) return;
+
+  container.innerHTML = Object.keys(builderData)
+    .map((categoryKey) => {
+      const category = builderData[categoryKey];
+      const chips = category.items
+        .map((item) => {
+          const selected = isBuilderItemSelected(categoryKey, item.id);
+          const priceLabel = item.price > 0 ? `+$${formatPrice(item.price)}` : "Free";
+          return `
+            <button
+              type="button"
+              class="builder__chip ${item.premium ? "builder__chip--premium" : ""} ${selected ? "selected" : ""}"
+              data-category="${categoryKey}"
+              data-id="${item.id}"
+            >
+              ${item.emoji ? `<span>${item.emoji}</span>` : ""}
+              <span>${item.name}</span>
+              ${item.veg ? '<span class="builder__chip-veg" title="Vegetarian">🌱</span>' : ""}
+              <span class="builder__chip-price">${priceLabel}</span>
+              ${item.premium ? '<span class="builder__chip-badge">Premium</span>' : ""}
+            </button>
+          `;
+        })
+        .join("");
+
+      return `
+        <div class="builder__group">
+          <h3 class="builder__group-title">
+            ${category.label}
+            <span class="builder__group-hint">(${category.hint})</span>
+          </h3>
+          <div class="builder__chips">${chips}</div>
+        </div>
+      `;
+    })
+    .join("");
+}
+
+// Build the stack from scratch once, in the correct visual order,
+// each layer still animates in one by one on page load.
+function renderInitialBurgerStack() {
+  const container = document.getElementById("burger-stack-layers");
+  if (!container) return;
+  container.innerHTML = "";
+
+  updateBunVisual();
+
+  const patty = findBuilderItem("patty", builderState.patty);
+  if (patty) insertLayerNode("patty", patty);
+
+  const cheese = findBuilderItem("cheese", builderState.cheese);
+  if (cheese && cheese.emoji) insertLayerNode("cheese", cheese);
+
+  builderState.toppings.forEach((id) => insertLayerNode("toppings", findBuilderItem("toppings", id)));
+  builderState.sauces.forEach((id) => insertLayerNode("sauces", findBuilderItem("sauces", id)));
+  builderState.extras.forEach((id) => insertLayerNode("extras", findBuilderItem("extras", id)));
+}
+
+function updateBuilderPrice() {
+  const priceEl = document.getElementById("builder-price");
+  if (!priceEl) return;
+
+  const total = calculateBuilderTotal();
+  priceEl.textContent = `$${formatPrice(total)}`;
+  priceEl.classList.remove("pulse");
+  // Force reflow so the animation can retrigger
+  void priceEl.offsetWidth;
+  priceEl.classList.add("pulse");
+}
+
+function addBuiltBurgerToCart() {
+  const total = calculateBuilderTotal();
+  const bun = findBuilderItem("bun", builderState.bun);
+  const patty = findBuilderItem("patty", builderState.patty);
+
+  const nameParts = [patty?.name, "on", bun?.name];
+  const customBurger = {
+    id: `custom-${Date.now()}`,
+    name: `Custom Burger (${nameParts.join(" ")})`,
+    price: total,
+    image: "burger-with-cheese-lettuce-tomato-and-onion-free-png.png",
+    quantity: 1
+  };
+
+  addToCart(customBurger);
+
+  const addBtn = document.getElementById("builder-add-btn");
+  if (addBtn) {
+    addBtn.classList.remove("added");
+    void addBtn.offsetWidth;
+    addBtn.classList.add("added");
+    const originalText = addBtn.textContent;
+    addBtn.textContent = "Added! 🎉";
+    setTimeout(() => {
+      addBtn.textContent = originalText;
+    }, 1200);
+  }
+}
+
+function initBurgerBuilder() {
+  renderBuilderOptions();
+  renderInitialBurgerStack();
+  updateBuilderPrice();
+
+  const optionsContainer = document.getElementById("builder-options");
+  if (optionsContainer) {
+    optionsContainer.addEventListener("click", (e) => {
+      const chip = e.target.closest(".builder__chip");
+      if (!chip) return;
+      toggleBuilderSelection(chip.dataset.category, chip.dataset.id);
+    });
+  }
+
+  const addBtn = document.getElementById("builder-add-btn");
+  if (addBtn) {
+    addBtn.addEventListener("click", addBuiltBurgerToCart);
+  }
+}
+
 // Testimonial Functions
 function rotateTestimonials() {
   const testimonials = document.querySelectorAll('.testimonial');
@@ -538,6 +874,7 @@ function init() {
   // Initial render
   renderFeaturedBurgers();
   renderMenuCategory('burgers');
+  initBurgerBuilder();
   updateCartUI();
   
   // Setup event listeners

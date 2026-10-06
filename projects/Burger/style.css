@@ -1697,8 +1697,331 @@ html {
   animation: spin 1s linear infinite;
 }
 
+/* Build Your Own Burger */
+.builder {
+  padding: var(--space-32) 0 80px;
+  background: linear-gradient(180deg, #fff5e6 0%, var(--burger-cream) 100%);
+}
+
+.builder__subtitle {
+  text-align: center;
+  color: var(--color-text-secondary);
+  max-width: 560px;
+  margin: calc(var(--space-32) * -1) auto var(--space-32);
+}
+
+.builder__layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: var(--space-32);
+  align-items: start;
+}
+
+/* Visual stack */
+.builder__visual {
+  position: sticky;
+  top: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+  box-shadow: var(--shadow-md);
+}
+
+.burger-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 260px;
+  justify-content: center;
+  margin-bottom: var(--space-20);
+}
+
+/* Bun halves are drawn with CSS, not emoji, so each bread type can look distinct */
+.burger-stack__bun-top,
+.burger-stack__bun-bottom {
+  width: 150px;
+  position: relative;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
+  transition: background 0.3s ease;
+}
+
+.burger-stack__bun-top {
+  height: 52px;
+  border-radius: 75px 75px 12px 12px / 52px 52px 10px 10px;
+  z-index: 2;
+}
+
+.burger-stack__bun-bottom {
+  height: 26px;
+  border-radius: 6px 6px 26px 26px / 6px 6px 20px 20px;
+}
+
+/* Seed / salt texture, shown only on the top bun */
+.burger-stack__bun-top::before {
+  content: "";
+  position: absolute;
+  inset: 4px 8px 8px;
+  border-radius: inherit;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.95) 1.4px, transparent 1.6px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.95) 1.4px, transparent 1.6px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.95) 1.4px, transparent 1.6px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.95) 1.4px, transparent 1.6px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.95) 1.4px, transparent 1.6px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.95) 1.4px, transparent 1.6px);
+  background-position: 15% 30%, 35% 55%, 55% 20%, 70% 50%, 85% 30%, 45% 75%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.burger-stack__bun-top::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 15%;
+  width: 70%;
+  height: 30%;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  filter: blur(3px);
+  pointer-events: none;
+}
+
+/* Classic Sesame */
+.burger-stack__bun-top.bun--bun-sesame,
+.burger-stack__bun-bottom.bun--bun-sesame {
+  background: linear-gradient(180deg, #f3b562 0%, #d99436 100%);
+}
+
+/* Whole Wheat: darker, no visible seeds */
+.burger-stack__bun-top.bun--bun-wheat,
+.burger-stack__bun-bottom.bun--bun-wheat {
+  background: linear-gradient(180deg, #b5793a 0%, #8a5a25 100%);
+}
+.burger-stack__bun-top.bun--bun-wheat::before {
+  opacity: 0.2;
+}
+
+/* Brioche: glossy deep gold */
+.burger-stack__bun-top.bun--bun-brioche,
+.burger-stack__bun-bottom.bun--bun-brioche {
+  background: linear-gradient(180deg, #f7c873 0%, #dd9c2f 100%);
+}
+.burger-stack__bun-top.bun--bun-brioche::before {
+  opacity: 0;
+}
+.burger-stack__bun-top.bun--bun-brioche::after {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+/* Pretzel: dark brown with salt flecks */
+.burger-stack__bun-top.bun--bun-pretzel,
+.burger-stack__bun-bottom.bun--bun-pretzel {
+  background: linear-gradient(180deg, #6b3e1e 0%, #4a2810 100%);
+}
+.burger-stack__bun-top.bun--bun-pretzel::before {
+  background-image: radial-gradient(circle, #fff 1.2px, transparent 1.4px),
+    radial-gradient(circle, #fff 1.2px, transparent 1.4px),
+    radial-gradient(circle, #fff 1.2px, transparent 1.4px),
+    radial-gradient(circle, #fff 1.2px, transparent 1.4px),
+    radial-gradient(circle, #fff 1.2px, transparent 1.4px),
+    radial-gradient(circle, #fff 1.2px, transparent 1.4px),
+    radial-gradient(circle, #fff 1.2px, transparent 1.4px);
+  background-position: 20% 25%, 40% 60%, 60% 15%, 75% 55%, 30% 80%, 88% 35%, 10% 55%;
+  opacity: 0.9;
+}
+
+.burger-stack__layers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  z-index: 1;
+}
+
+.burger-stack__layer {
+  font-size: 2.2rem;
+  line-height: 1;
+  animation: layerDrop 0.45s var(--ease-standard, ease-out) both;
+  transform-origin: center;
+}
+
+.burger-stack__layer--removing {
+  animation: layerRemove 0.25s ease forwards !important;
+  pointer-events: none;
+}
+
+@keyframes layerDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(-24px) scale(0.6);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(4px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes layerRemove {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.4) translateY(6px);
+  }
+}
+
+.builder__price-tag {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-8);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-16);
+}
+
+.builder__price {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--burger-red);
+  transition: transform 0.2s ease;
+}
+
+.builder__price.pulse {
+  animation: pricePulse 0.3s ease;
+}
+
+@keyframes pricePulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.25);
+    color: var(--burger-orange);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Options */
+.builder__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.builder__group {
+  background: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-20);
+}
+
+.builder__group-title {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-12);
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.builder__group-hint {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-secondary);
+}
+
+.builder__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-10);
+}
+
+.builder__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-background);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family-base);
+  color: var(--color-text);
+  transition: all 0.2s ease;
+}
+
+.builder__chip:hover {
+  border-color: var(--burger-red);
+  transform: translateY(-2px);
+}
+
+.builder__chip.selected {
+  background: var(--burger-red);
+  border-color: var(--burger-red);
+  color: white;
+  box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
+}
+
+.builder__chip--premium {
+  border-color: var(--burger-yellow);
+}
+
+.builder__chip--premium.selected {
+  background: var(--burger-orange);
+  border-color: var(--burger-orange);
+}
+
+.builder__chip-price {
+  font-size: var(--font-size-xs);
+  opacity: 0.85;
+}
+
+.builder__chip-veg {
+  font-size: 11px;
+}
+
+.builder__chip-badge {
+  font-size: 9px;
+  font-weight: var(--font-weight-bold);
+  background: var(--burger-yellow);
+  color: var(--burger-charcoal);
+  padding: 1px 6px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.builder__chip.selected .builder__chip-badge {
+  background: white;
+  color: var(--burger-orange);
+}
+
+#builder-add-btn.added {
+  animation: bounce 0.5s ease;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
+  .builder__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .builder__visual {
+    position: static;
+  }
+
   .hero__container {
     grid-template-columns: 1fr;
     text-align: center;
