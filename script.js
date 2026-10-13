@@ -1,29 +1,28 @@
 // ================== Page Loader ==================
 (function () {
   const loader = document.getElementById("pageLoader");
-  const bar = document.getElementById("loaderBar");
-  if (!loader || !bar) return;
+  if (!loader) return;
 
-  let progress = 0;
-  const interval = setInterval(() => {
-    progress += Math.random() * 18;
-    if (progress >= 100) {
-      progress = 100;
-      clearInterval(interval);
-      bar.style.width = "100%";
-      setTimeout(() => {
-        loader.classList.add("hidden");
-      }, 400);
-    }
-    bar.style.width = progress + "%";
-  }, 80);
+  const MIN_DISPLAY = 2600; // ms — lets the PORTFOLIO intro finish
+  const startTime = performance.now();
+  let pageLoaded = document.readyState === "complete";
+  let hideScheduled = false;
 
-  window.addEventListener("load", () => {
-    progress = 100;
-    bar.style.width = "100%";
-    clearInterval(interval);
-    setTimeout(() => loader.classList.add("hidden"), 300);
-  });
+  function scheduleHide() {
+    if (hideScheduled || !pageLoaded) return;
+    hideScheduled = true;
+    const remaining = Math.max(0, MIN_DISPLAY - (performance.now() - startTime));
+    setTimeout(() => loader.classList.add("hidden"), remaining + 200);
+  }
+
+  if (pageLoaded) {
+    scheduleHide();
+  } else {
+    window.addEventListener("load", () => {
+      pageLoaded = true;
+      scheduleHide();
+    });
+  }
 })();
 
 // ================== Mobile Nav Toggle ==================
@@ -110,6 +109,7 @@ function scrollActive() {
     const sectionTop = current.offsetTop - 50; // adjust for nav height
     const sectionId = current.getAttribute("id");
     const navLink = document.querySelector(`.nav-menu a[href*=${sectionId}]`);
+    if (!navLink) return;
 
     if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
       navLink.classList.add("active-link");
@@ -121,97 +121,6 @@ function scrollActive() {
 
 // Run on scroll
 window.addEventListener("scroll", scrollActive);
-
-// modal
-document.addEventListener("DOMContentLoaded", () => {
-  const projectsData = {
-    amazon: {
-      title: "Amazon Clone",
-      description: "This is my first clone project but this isn’t complete.",
-      date: "1 Jan 2025",
-      Use: "HTML, CSS",
-      type: "Frontend",
-      type: "code",
-      type: "code",
-      type: "code",
-      github: "https://www.github.com",
-      demo: "https://your-amazon-demo-link.com",
-      img: "assets/picture/amazon/1.png",
-    },
-    netflix: {
-      title: "Netflix Login Clone",
-      description: "Login page clone with responsive UI.",
-      date: "15 Feb 2025",
-      Use: "HTML, CSS, JS",
-      type: "Frontend",
-      github: "https://www.github.com",
-      demo: "https://your-netflix-demo-link.com",
-      img: "assets/picture/netflix/1.png",
-    },
-    burger: {
-      title: "Burger Craft",
-      description: "E-Commerce website for making own burger.",
-      date: "20 Aug 2025",
-      Use: "HTML, CSS, JS",
-      type: "Frontend",
-      github: "https://www.github.com",
-      demo: "https://your-netflix-demo-link.com",
-      img: "assets/picture/burger/1.png",
-    },
-    loginUI: {
-      title: "Login UI Design",
-      description: "Clean login page UI design for practice.",
-      date: "20 Feb 2025",
-      Use: "Figma Prototype",
-      type: "Design",
-      github: "#",
-      demo: "https://www.figma.com/design/mBUgN5ZVRgJp8fkwyZn7y7/Shared-file?node-id=0-1&t=jVecG9wJC7c3QyJG-1",
-      img: "assets/Picture/4-project.png",
-    },
-  };
-
-  const modal = document.getElementById("projectModal");
-  const modalImg = document.getElementById("modalImage");
-  const modalTitle = document.getElementById("modalTitle");
-  const modalDesc = document.getElementById("modalDescription");
-  const modalDate = document.getElementById("modalDate");
-  const modalLang = document.getElementById("modalUse");
-  const modalGithub = document.getElementById("modalGithub");
-  const modalDemo = document.getElementById("modalDemo");
-  const closeBtn = document.querySelector(".close-btn");
-
-  const viewButtons = document.querySelectorAll(".project-view");
-
-  viewButtons.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const projectKey = btn.dataset.project;
-      const project = projectsData[projectKey];
-
-      if (project) {
-        modalImg.src = project.img;
-        modalTitle.innerText = project.title;
-        modalDesc.innerText = project.description;
-        modalDate.innerText = project.date;
-        modalUse.innerText = project.Use;
-        modalGithub.href = project.github;
-        modalDemo.href = project.demo;
-
-        modal.style.display = "flex";
-      }
-    });
-  });
-
-  closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-  });
-
-  window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.style.display = "none";
-    }
-  });
-});
 
 // ================== GSAP Scroll Animations ==================
 document.addEventListener("DOMContentLoaded", () => {
@@ -280,20 +189,6 @@ document.addEventListener("DOMContentLoaded", () => {
           start: "top 95%",
         },
       });
-    });
-
-    // Home title + subtitle
-    gsap.from(".home-title, .home-subtitle", {
-      yPercent: 100,
-      opacity: 0,
-      duration: 1,
-      ease: "power4.out",
-      stagger: 0.2,
-      scrollTrigger: {
-        trigger: ".home-data",
-        start: "top 95%",
-        toggleActions: "play none none reverse",
-      },
     });
   }
 
@@ -733,26 +628,5 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeModal();
-  });
-});
-
-// ================== Graphic Design Section ==================
-document.addEventListener("DOMContentLoaded", () => {
-  const items = document.querySelectorAll(".graphic-item");
-  const preview = document.getElementById("graphicPreview");
-  if (!items.length || !preview) return;
-
-  items.forEach((item) => {
-    item.addEventListener("click", () => {
-      items.forEach((i) => i.classList.remove("active"));
-      item.classList.add("active");
-
-      const img = preview.querySelector(".graphic-preview-img");
-      img.style.opacity = "0";
-      setTimeout(() => {
-        img.src = item.dataset.img;
-        img.style.opacity = "1";
-      }, 200);
-    });
   });
 });

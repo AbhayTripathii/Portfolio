@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <!--
+    - favicon
+  -->
+
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+  <!-- Page Loader -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-inner">
+      <div class="loader-bar-wrap">
+        <div class="loader-bar" id="loaderBar"></div>
+      </div>
+      <div class="loader-name">
+        <span class="ln-a">A</span><span class="ln-b">T</span>
+      </div>
+      <p class="loader-label">Loading Portfolio</p>
+    </div>
+  </div>
+      
+      <!-- Hamburger toggle for mobile -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <aside class="sidebar" id="sidebar">
+        <nav class="nav">
+            <div class="nav-logo">
+              <a href="#" class="nav-logo"><img src="assets/Picture/1-logo.png" alt=""
+              /></a>
+            </div>
+
+            <!-- Close button inside sidebar for mobile -->
+            <button class="nav-close" id="nav-close" aria-label="Close menu">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="nav-menu">
+                <div class="menu">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#home" class="nav-link active-link">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#about" class="nav-link">About</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#skills" class="nav-link">Skills</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#work" class="nav-link">Work</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#services" class="nav-link">Services</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#contact" class="nav-link">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="btn-share">
+              <i class="fa-solid fa-share-nodes social-share"></i>
+            </div>
+        </nav>
+      </aside>
+    <main class="main">
+      <section class="home" id="home">
+
+        <!-- Parallax background layer -->
+        <div class="parallax-bg" id="parallaxBg"></div>
+
+        <!-- Fixed AT logo watermark — behind everything -->
+        <div class="hero-watermark"></div>
+
+        <!-- Orbs -->
+        <div class="hero-orb orb-1"></div>
+        <div class="hero-orb orb-2"></div>
+        <div class="hero-orb orb-3"></div>
+        <div class="hero-grain"></div>
+
+        <div class="hero-type-wrap" id="heroContent">
+
+          <!-- eyebrow -->
+          <div class="hero-eyebrow">
+            <!-- <span class="hero-eyebrow-line"></span> -->
+            <!-- <span class="hero-eyebrow-text">Portfolio &middot; 2025</span> -->
+            <!-- <span class="hero-eyebrow-line"></span> -->
+          </div>
+
+          <!-- Name — split letters for animation -->
+          <div class="hero-name-block">
+            <div class="hero-name-row">
+              <h1 class="hero-first">
+                <span class="ltr">A</span><span class="ltr">b</span><span class="ltr">h</span><span class="ltr">a</span><span class="ltr">y</span>
+              </h1>
+            </div>
+            <div class="hero-name-row last-row">
+              <h1 class="hero-last">
+                <span class="ltr">T</span><span class="ltr">r</span><span class="ltr">i</span><span class="ltr">p</span><span class="ltr">a</span><span class="ltr">t</span><span class="ltr">h</span><span class="ltr">i</span>
+              </h1>
+            </div>
+          </div>
+
+          <!-- role -->
+          <div class="hero-role-wrap">
+            <span class="hero-role-dot"></span>
+            <p class="hero-role">UI/UX Designer &amp; Frontend Developer</p>
+            <span class="hero-role-dot"></span>
+          </div>
+
+          <!-- desc -->
+          <p class="hero-desc-text">Crafting clean, responsive &amp; user-focused<br>web experiences from code to design.</p>
+
+          <!-- CTAs -->
+          <div class="hero-actions">
+            <a href="#work" class="hero-btn-primary">View My Work <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#contact" class="hero-btn-ghost">Let&#39;s Talk</a>
+          </div>
+
+          <!-- socials -->
+          <div class="hero-social">
+            <a href="https://www.linkedin.com/in/abhay-tripathi-8966972bb/" target="_blank" class="hero-social-link"><i class="fab fa-linkedin-in"></i></a>
+            <span class="hero-social-divider"></span>
+            <a href="https://github.com/AbhayTripathii" target="_blank" class="hero-social-link"><i class="fab fa-github"></i></a>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ===================================About me============================================= -->
+
+      <section id="about" class="about section">
+        <h2 class="section-title" data-heading="Intro">About me</h2>
+        <div class="about-section">
+          <div class="about-img">
+            <img
+              src="assets/Picture/profile_round.png"
+              alt="profile"
+              class="profile-img"
+              width="300px"
+            />
+            <a href="#contact" class="button about-button"
+              ><i class="uil uil-navigator button-icon"></i>Contact me</a
+            >
+          </div>
+          <div class="second-items">
+            <div class="second-content">
+              <h3>Hi, <span class="head">I'm Abhay Tripathi</span></h3>
+              <p>
+                I am a junior web developer with a strong interest in building clean,
+                responsive, and user-focused web interfaces. I have hands-on experience with
+                HTML, CSS, and JavaScript, and I also work with UI design tools like Figma and
+                graphic design tools such as Adobe Illustrator and Canva. I enjoy working on
+                practical projects that help me improve my skills and grow as a developer.
+              </p>
+            </div>
+
+              <!-- core technologies -->
+              <div class="core-section">
+                <h4 class="core-title">Core Technologies</h4>
+                <div class="core-grid">
+                  <span class="core-tag">HTML5, CSS3, JavaScript (ES6+)</span>
+                  <!-- <span class="core-tag">React.js (Basics), GSAP</span> -->
+                  <span class="core-tag">Git, GitHub, VS Code</span>
+                  <span class="core-tag">Node.js (Basics)</span>
+                  <span class="core-tag">MySQL</span>
+                </div>
+              </div>
+              <div class="about-info">
+                <div class="about-box">
+                  <h3 class="about-title">Experience</h3>
+                  <span class="about-subtitle">Entry Level</span>
+                </div>
+                <div class="about-box">
+                  <h3 class="about-title">Projects</h3>
+                  <span class="about-subtitle">4 + </span>
+                </div>
+                <div class="about-box">
+                  <h3 class="about-title">Learning</h3>
+                  <span class="about-subtitle">Ongoing</span>
+                </div>
+              </div>
+          </div>
+
+
+          
+        </div>
+      </section>
+      <!-- ===================================Skills============================================= -->
+      <section class="qualification section" id="skills">
+        <h2 class="section-title" data-heading="Abilities">
+          Areas of Expertise
+        </h2>
+        <div class="skills-container container grid skills-section">
+          <div class="languages">
+            <h3 class="qualification-title">
+              <i class="fa-solid fa-code"></i>&nbsp;&nbsp; Languages
+            </h3>
+            <div class="skill">
+              <div class="skill-title">HTML <span>80%</span></div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 80%"></div>
+              </div>
+            </div>
+            
+            <div class="skill">
+              <div class="skill-title">CSS <span>80%</span></div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 80%"></div>
+              </div>
+            </div>
+
+            <div class="skill">
+              <div class="skill-title">JavaScript<span>60%</span></div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 60%"></div>
+              </div>
+            </div>
+            <div class="skill">
+              <div class="skill-title">C/C++<span>50%</span></div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 50%"></div>
+              </div>
+            </div>
+            <div class="skill">
+              <div class="skill-title">Git & GitHub<span>50%</span></div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 50%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="design">
+            <h3 class="qualification-title">
+              <i class="fa-solid fa-pencil-ruler"></i>&nbsp;&nbsp;Designing
+              Tools
+            </h3>
+            <div class="skill">
+              <div class="skill-title">Adobe Illustrator <span>80%</span></div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 80%"></div>
+              </div>
+            </div>
+            <div class="skill">
+              <div class="skill-title">Adobe Photoshop <span>50%</span></div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 50%"></div>
+              </div>
+            </div>
+
+            <div class="skill">
+              <div class="skill-title">Figma <span>70%</span></div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 70%"></div>
+              </div>
+            </div>
+
+            <div class="skill">
+              <div class="skill-title">Wordpress <span>50%</span></div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 50%"></div>
+              </div>
+            </div>
+            <div class="skill">
+              <div class="skill-title">Canva <span>80%</span></div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 80%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="Editing">
+            <h3 class="qualification-title">
+              <i class="fa-solid fa-pen-to-square"></i>&nbsp;&nbsp;Editing Tools
+            </h3>
+            <div class="skill">
+              <div class="skill-title">VN/CapCut Mobile Apps <span>50%</span></div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 50%"></div>
+              </div>
+            </div>
+            <!-- <div class="skill">
+              <div class="skill-title">DaVinci Resolve <span>50%</span></div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 50%"></div>
+              </div>
+            </div> -->
+
+            <div class="skill">
+              <div class="skill-title">Adobe Premiere Pro<span>50%</span></div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 50%"></div>
+              </div>
+            </div>
+
+            <div class="skill">
+              <div class="skill-title">Adobe Lightroom <span>50%</span></div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 50%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================Qualifications============================================= -->
+
+      <section class="qualification section">
+        <h2 class="section-title" data-heading="My Journey">Qualifications</h2>
+
+        <div class="qualification-container container grid">
+          <div class="education">
+            <h3 class="qualification-title">
+              <i class="uil uil-graduation-cap"></i>&nbsp;&nbsp;Education
+            </h3>
+
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="circle-dot"></div>
+                <h3 class="timeline-title">
+                  IGNOU University (New Delhi, India)
+                </h3>
+                <p class="timeline-text">Bachelor of Computer Application</p>
+                <span class="timeline-date"
+                  ><i class="uil uil-calendar-alt"></i>2023 - 2026</span
+                >
+              </div>
+
+              <!-- <div class="timeline-item">
+                <div class="circle-dot"></div>
+                <h3 class="timeline-title">IIAT Institute (Delhi. India)</h3>
+                <p class="timeline-text">
+                  Advanced Diploma in Computer Applications (ADCA)
+                </p>
+                <span class="timeline-date"
+                  ><i class="uil uil-calendar-alt"></i>2021 - 2022</span
+                >
+              </div> -->
+            </div>
+          </div>
+
+          <div class="experience">
+            <h3 class="qualification-title">
+              <i class="uil uil-suitcase"></i>&nbsp;&nbsp;Experience
+            </h3>
+
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="circle-dot"></div>
+                <h3 class="timeline-title">Graphic Designer (Freelance)</h3>
+                <p class="timeline-text"><b> Independent Projects </b> </p>
+                <span class="timeline-date"
+                  ><i class="uil uil-calendar-alt"></i>6+ Months</span
+                >
+              </div>
+            
+            
+              <div class="timeline-item">
+                <div class="circle-dot"></div>
+                <h3 class="timeline-title">Frontend Developer</h3>
+                <p class="timeline-text"><b>Nowgray IT Services Private Limited</b> </p>
+                <span class="timeline-date"
+                  ><i class="uil uil-calendar-alt"></i>3+ Months</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="experience">
+            <h3 class="qualification-title">
+              <i class="uil uil-suitcase"></i>&nbsp;&nbsp;Certifications & Trainings
+            </h3>
+            
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="circle-dot"></div>
+                <h3 class="timeline-title">Udemy</h3>
+                <p class="timeline-text">
+                  Adobe Illustrator CC – Advanced Training 
+                </p>
+                
+              </div>
+            </div>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="circle-dot"></div>
+                <h3 class="timeline-title">Udemy</h3>
+                <p class="timeline-text">
+                  CSS - The Complete Guide(incl. Flexbox, Grid & Sass)
+                </p>
+              </div>
+            </div>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="circle-dot"></div>
+                <h3 class="timeline-title">Udemy</h3>
+                <p class="timeline-text">JS - The Complete Course</p>
+              </div>
+            </div>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="circle-dot"></div>
+                <h3 class="timeline-title">IIAT Institute (Delhi. India)</h3>
+                <p class="timeline-text">Advanced Diploma in Computer Applications (ADCA)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- =================================== Works ============================================= -->
+      <section class="work-section section" id="work">
+        <h2 class="section-title" data-heading="Portfolio">My Work</h2>
+
+        <div class="work-tabs">
+          <button class="work-tab active" data-filter="development">Development</button>
+          <button class="work-tab" data-filter="uiux">UI/UX Design</button>
+          <button class="work-tab" data-filter="graphic">Graphic Design</button>
+        </div>
+
+        <div class="slider-container" id="devUiuxView">
+          <button class="slider-arrow prev" id="sliderPrev"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="slider-arrow next" id="sliderNext"><i class="fa-solid fa-chevron-right"></i></button>
+
+          <div class="slider-track" id="sliderTrack">
+            <div class="slide" data-index="0" data-category="development">
+              <div class="slide-img-wrap">
+                <img src="assets/picture/amazon/1.png" alt="Amazon Clone" />
+                <div class="slide-overlay"><button class="view-project-btn" data-project="amazon">View Project</button></div>
+              </div>
+              <div class="slide-foot">
+                <span class="slide-tag">HTML · CSS</span>
+                <h3 class="slide-title">Amazon Clone</h3>
+                <a href="https://www.github.com" target="_blank" class="slide-gh"><i class="fab fa-github"></i> GitHub</a>
+              </div>
+            </div>
+            <div class="slide" data-index="1" data-category="development">
+              <div class="slide-img-wrap">
+                <img src="assets/picture/netflix/1.png" alt="Netflix Clone" />
+                <div class="slide-overlay"><button class="view-project-btn" data-project="netflix">View Project</button></div>
+              </div>
+              <div class="slide-foot">
+                <span class="slide-tag">HTML · CSS · JS</span>
+                <h3 class="slide-title">Netflix Login Clone</h3>
+                <a href="https://www.github.com" target="_blank" class="slide-gh"><i class="fab fa-github"></i> GitHub</a>
+              </div>
+            </div>
+            <div class="slide" data-index="2" data-category="development">
+              <div class="slide-img-wrap">
+                <img src="assets/picture/burger/1.png" alt="Burger Craft" />
+                <div class="slide-overlay"><button class="view-project-btn" data-project="burger">View Project</button></div>
+              </div>
+              <div class="slide-foot">
+                <span class="slide-tag">HTML · CSS · JS</span>
+                <h3 class="slide-title">Burger Craft</h3>
+                <a href="https://www.github.com" target="_blank" class="slide-gh"><i class="fab fa-github"></i> GitHub</a>
+              </div>
+            </div>
+            <div class="slide" data-index="4" data-category="development">
+              <div class="slide-img-wrap">
+                <img src="assets/picture/attend/1.png" alt="Attendance Management System" />
+                <div class="slide-overlay"><button class="view-project-btn" data-project="attend">View Project</button></div>
+              </div>
+              <div class="slide-foot">
+                <span class="slide-tag">GPS · Face API</span>
+                <h3 class="slide-title">Attendance Management System</h3>
+                <a href="https://github.com/AbhayTripathii/attendance-app" target="_blank" class="slide-gh"><i class="fab fa-github"></i> GitHub</a>
+              </div>
+            </div>
+            <div class="slide" data-index="3" data-category="uiux">
+              <div class="slide-img-wrap">
+                <img src="assets/Picture/4-project.png" alt="Login UI" />
+                <div class="slide-overlay"><button class="view-project-btn" data-project="loginUI">View Project</button></div>
+              </div>
+              <div class="slide-foot">
+                <span class="slide-tag">Figma</span>
+                <h3 class="slide-title">Login UI Design</h3>
+                <a href="projects/loginUi/index.html" target="_blank" class="slide-gh"><i class="fab fa-figma"></i> Figma</a>
+              </div>
+            </div>
+            <div class="slide" data-index="5" data-category="uiux">
+              <div class="slide-img-wrap">
+                <img src="assets/Picture/2-project.png" alt="FreshMart Grocery" />
+                <div class="slide-overlay"><button class="view-project-btn" data-project="freshmart">View Project</button></div>
+              </div>
+              <div class="slide-foot">
+                <span class="slide-tag">Figma</span>
+                <h3 class="slide-title">FreshMart Grocery</h3>
+                <a href="projects/freshmart/index.html" target="_blank" class="slide-gh"><i class="fab fa-figma"></i> Figma</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-dots" id="sliderDots"></div>
+        </div>
+
+        <!-- Graphic Design view (shown in place, no scroll, when tab is active) -->
+        <div class="graphic-layout" id="graphicView" style="display: none;">
+          <!-- Left: scrollable preview -->
+          <div class="graphic-preview-box" id="graphicPreview">
+            <img src="assets/Picture/graphic/1.png" alt="Design 1" class="graphic-preview-img active" />
+          </div>
+
+          <!-- Right: numbered list -->
+          <div class="graphic-list" id="graphicList">
+            <div class="graphic-item active" data-img="assets/Picture/graphic/1.png">
+              <span class="graphic-num">01</span>
+              <div class="graphic-item-info">
+                <h4>Poster Design</h4>
+                <p>Adobe Illustrator</p>
+              </div>
+            </div>
+            <div class="graphic-item" data-img="assets/Picture/graphic/2.jpg">
+              <span class="graphic-num">02</span>
+              <div class="graphic-item-info">
+                <h4>Logo Design</h4>
+                <p>Adobe Illustrator</p>
+              </div>
+            </div>
+            <div class="graphic-item" data-img="assets/Picture/graphic/3.png">
+              <span class="graphic-num">03</span>
+              <div class="graphic-item-info">
+                <h4>Social Media Last Page</h4>
+                <p>Photoshop</p>
+              </div>
+            </div>
+            <div class="graphic-item" data-img="assets/Picture/graphic/t.png">
+              <span class="graphic-num">04</span>
+              <div class="graphic-item-info">
+                <h4>T-Shirt Design</h4>
+                <p>Adobe Illustrator</p>
+              </div>
+            </div>
+            <div class="graphic-item" data-img="assets/Picture/graphic/c.jpg">
+              <span class="graphic-num">05</span>
+              <div class="graphic-item-info">
+                <h4>Festive Design</h4>
+                <p>Adobe Illustrator · Photoshop</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project Detail Modal -->
+      <div class="proj-modal-backdrop" id="projModalBackdrop">
+        <div class="proj-modal" id="projModal">
+          <button class="proj-modal-close" id="projModalClose"><i class="fa-solid fa-xmark"></i></button>
+          <div class="proj-modal-left">
+            <div class="proj-screenshot-box" id="projScreenshots"></div>
+          </div>
+          <div class="proj-modal-right">
+            <span class="proj-modal-tag" id="projModalTag"></span>
+            <h2 class="proj-modal-title" id="projModalTitle"></h2>
+            <p class="proj-modal-desc" id="projModalDesc"></p>
+            <div class="proj-modal-skills" id="projModalSkills"></div>
+            <p class="proj-modal-meta"><i class="fa-regular fa-calendar"></i> <span id="projModalDate"></span></p>
+            <a href="#" id="projModalGithub" target="_blank" class="proj-modal-gh"><i class="fab fa-github"></i> View Code on GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- =================================== Services Section ============================================= -->
+      <section class="services-section" id="services" >
+        <h2 class="section-title" data-heading="Portfolio">My Services</h2>
+
+        <div class="services-container">
+          <div class="services-grid">
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <h3 class="service-title">Frontend Development</h3>
+              <p class="service-description">
+                Creating responsive and interactive user interfaces using modern
+                frameworks like React, Vue.js, and Angular with pixel-perfect
+                design implementation.
+              </p>
+              <ul class="service-features">
+                <li>Responsive Web Design</li>
+                <li>Modern UI Page</li>
+                <li>Performance Optimization</li>
+                <li>Cross-browser Compatibility</li>
+              </ul>
+              
+            </div>
+            
+            <div
+              class="service-card featured"
+            >
+              <div class="service-icon">
+                <i class="fa-solid fa-pencil-ruler"></i>
+              </div>
+              <h3 class="service-title">UI/UX Design</h3>
+              <p class="service-description">
+                Designing intuitive and visually appealing user experiences that
+                convert visitors into customers through strategic design
+                thinking and user research.
+              </p>
+              <ul class="service-features">
+                <li>User Research & Analysis</li>
+                <li>Wireframing & Prototyping</li>
+                <li>Visual Design System</li>
+                <li>Usability Testing</li>
+              </ul>
+              
+            </div>
+
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fa-solid fa-paintbrush"></i>
+              </div>
+              <h3 class="service-title">Graphic Design</h3>
+              <p class="service-description">
+                Creating impactful visual identities, logos, and marketing
+                materials that resonate with your brand message and captivate
+                your audience.
+              </p>
+              <ul class="service-features">
+                <li>Logo & Brand Identity</li>
+                <li>Marketing Materials</li>
+                <li>Print & Digital Design</li>
+                <li>Brand Guidelines</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    
+<!-- =================================== Contact Section ======================================= -->
+      <section id="contact" class="contact-section">
+  <h2 class="contact-title">Get in Touch 💬</h2>
+  <p class="contact-subtitle">Feel free to reach out — I usually reply within a few hours!</p>
+
+  <div class="contact-info-grid">
+    <div class="info-card">
+      <i class="fas fa-map-marker-alt"></i>
+      <h3>Location</h3>
+      <p>Delhi, India</p>
+    </div>
+
+    <div class="info-card">
+      <i class="fas fa-phone-alt"></i>
+      <h3>Phone</h3>
+      <p>+91 7838133442</p>
+    </div>
+
+    <div class="info-card">
+      <i class="fas fa-envelope"></i>
+      <h3>Email</h3>
+      <p>codetechabhay@gmail.com</p>
+    </div>
+
+    <div class="info-card">
+      <i class="fas fa-clock"></i>
+      <h3>Response Time</h3>
+      <p>Within 2–4 hours</p>
+    </div>
+  </div>
+
+  <div class="contact-links">
+    <a href="https://wa.me/917838133442?text=Hello%20Abhay,%20I%20saw%20your%20portfolio" target="_blank" class="contact-link">
+      <i class="fab fa-whatsapp"></i>
+      <span>WhatsApp</span>
+    </a>
+
+    <a href="https://www.linkedin.com/in/abhay-tripathi-8966972bb/" target="_blank" class="contact-link">
+      <i class="fab fa-linkedin"></i>
+      <span>LinkedIn</span>
+    </a>
+
+    <a href="https://github.com/AbhayTripathii" target="_blank" class="contact-link">
+      <i class="fab fa-github"></i>
+      <span>GitHub</span>
+    </a>
+  </div>
+</section>
+      
+
+        <footer class="site-footer">
+    <div class="footer-top">
+      <h2 class="footer-headline">Let's build something<br>great together.</h2>
+      <p class="footer-tagline">Open to freelance projects, collaborations &amp; full-time opportunities.</p>
+      <a href="#contact" class="footer-cta">Get in touch</a>
+    </div>
+
+    <div class="footer-main container">
+      <div class="footer-brand">
+        <img src="assets/Picture/1-logo.png" alt="Logo" class="footer-logo" />
+        <span class="footer-brand-name">Abhay Tripathi</span>
+        <p id="footer-quote" class="footer-quote"></p>
+        <div class="footer-socials">
+          <a href="https://wa.me/917838133442?text=Hello%20Abhay,%20I%20saw%20your%20portfolio" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.linkedin.com/in/abhay-tripathi-8966972bb/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/AbhayTripathii" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#work">Work</a>
+        </div>
+        <div class="footer-col">
+          <h4>More</h4>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom container">
+      <p class="footer-copy">© 2025 Abhay Tripathi. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+
+    </main>
+    <!-- Load GSAP libraries first -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+
+    <!-- Then load your custom JS -->
+    <script src="script.js" defer></script>
+</html>

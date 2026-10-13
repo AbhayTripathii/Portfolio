@@ -375,80 +375,75 @@ input {
 }
 
 /* ==============================
-   PAGE LOADER
+   PAGE LOADER — outlined PORTFOLIO intro
    ============================== */
 .page-loader {
   position: fixed;
   inset: 0;
-  background: #060810;
+  background: #000;
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   transition:
-    opacity 0.6s ease,
-    visibility 0.6s ease;
+    opacity 0.8s ease,
+    visibility 0.8s ease;
 }
 .page-loader.hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
-.loader-inner {
+
+.loader-word {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.2rem;
-}
-.loader-name {
-  font-family: "Montserrat", sans-serif;
-  font-size: 3.5rem;
+  font-family: "Syne", sans-serif;
   font-weight: 800;
-  letter-spacing: 0.15em;
-  display: flex;
-  gap: 0.1em;
+  font-size: clamp(1.8rem, 8vw, 6.5rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: transparent; /* no fill — outline only */
+  -webkit-text-stroke: 2px #fff;
+  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.25));
+  user-select: none;
 }
-.ln-a {
-  color: #eef2ff;
-  animation: loaderLetter 0.6s ease both;
+
+.loader-word span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px) skewY(6deg);
+  animation: loaderLetterIn 0.7s cubic-bezier(0.22, 0.68, 0, 1.2) forwards;
+  animation-delay: calc(var(--i) * 0.09s + 0.2s);
 }
-.ln-b {
-  background: linear-gradient(130deg, #e63946, #ff6b6b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: loaderLetter 0.6s ease both 0.15s;
-}
-@keyframes loaderLetter {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
+
+@keyframes loaderLetterIn {
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) skewY(0);
   }
 }
-.loader-bar-wrap {
-  width: 160px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 2px;
-  overflow: hidden;
+
+/* Thin line that sweeps under the word */
+.page-loader::after {
+  content: "";
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  width: min(420px, 70vw);
+  height: 1px;
+  background: #fff;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  animation: loaderLine 1.2s ease 0.4s forwards;
+  opacity: 0.6;
 }
-.loader-bar {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #e63946, #ff6b6b);
-  border-radius: 2px;
-  transition: width 0.05s linear;
-}
-.loader-label {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.68rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.3);
+
+@keyframes loaderLine {
+  to {
+    transform: translateX(-50%) scaleX(1);
+  }
 }
 
 /* ==============================
@@ -867,11 +862,6 @@ input {
   box-shadow: var(--hover-shadow);
 }
 
-/* .social-icon:hover {
-  color: var(--white);
-  transform: translateY(-3px);
-} */
-
 .home-img {
   display: none;
 }
@@ -928,14 +918,6 @@ input {
   flex: 0 1 680px;
   min-width: 260px;
 }
-
-/* .second-items::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.06);
-  z-index: 0;
-} */
 
 .second-content {
   z-index: 1;
@@ -1213,18 +1195,9 @@ input {
 
 /* Work Section */
 
-/* Grid Layout */
-
 .work-section {
   margin-top: 2rem;
 }
-
-/* .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  justify-content: center;
-} */
 
 .projects-grid {
   display: grid;
@@ -1350,7 +1323,6 @@ input {
   left: 0;
   right: 0;
   height: 1px;
-  /* background: var(--gradient-primary); */
 }
 
 .services-container {
@@ -2780,8 +2752,162 @@ input {
   }
 }
 
-/* ── Old separate Graphic Design layout removed — now unified into the main slider ── */
+/* ==============================
+   WORK SECTION — pill category buttons + responsive slider
+   ============================== */
 
-/* ── Glow pulse removed for a simpler look ── */
+/* Mobile */
+@media screen and (max-width: 768px) {
+  /* Category buttons as pills (mobile only) */
+  .work-cat-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .work-cat-item,
+  .work-cat-item:not(.active),
+  .work-cat-item.active {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0.5rem 0.95rem;
+    border: 1px solid rgba(230, 57, 70, 0.35);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-secondary);
+    font-family: var(--body-font);
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    opacity: 1;
+    cursor: pointer;
+    transition:
+      background 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease,
+      box-shadow 0.3s ease,
+      transform 0.3s ease;
+  }
+  .work-cat-item::before {
+    display: none;
+  }
+  .work-cat-item:hover {
+    color: #fff;
+    border-color: var(--color-main);
+    background: rgba(230, 57, 70, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(230, 57, 70, 0.2);
+  }
+  .work-cat-item.active {
+    background: linear-gradient(135deg, #e63946, #c1121f);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 0 22px rgba(230, 57, 70, 0.45);
+  }
+  .work-cat-item.active:hover {
+    transform: none;
+  }
 
-/* ── Red glow on hero name removed ── */
+  .work-section {
+    display: block;
+    overflow: hidden;
+  }
+
+  .work-layout {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1rem;
+    gap: 1.5rem;
+    margin-top: 0;
+  }
+
+  .work-side {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .work-cat-list {
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .work-cat-item,
+  .work-cat-item:not(.active),
+  .work-cat-item.active {
+    padding: 0.5rem 0.95rem;
+    font-size: 0.74rem;
+  }
+
+  .work-desc {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    max-width: 100%;
+    margin-bottom: 1.1rem;
+  }
+
+  .work-cta-btn {
+    font-size: 0.7rem;
+    padding: 0.7rem 1.3rem;
+  }
+
+  .slider-container {
+    width: 100%;
+    min-width: 0;
+    gap: 1.2rem;
+    padding: 0.5rem 0;
+  }
+
+  .slider-viewport {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 16px;
+  }
+
+  .slide {
+    flex: 0 0 80%;
+    width: 80%;
+    border-radius: 16px;
+  }
+  .slide-img-wrap {
+    height: 185px;
+  }
+  .slide-foot {
+    padding: 0.9rem 1rem 1.1rem;
+  }
+  .slide-title {
+    font-size: 0.95rem;
+  }
+
+  .slider-controls {
+    gap: 0.9rem;
+  }
+  .slider-arrow {
+    width: 38px;
+    height: 38px;
+  }
+
+  /* Touch screens have no hover, so show the View button on the active card */
+  .slide.active .slide-overlay {
+    opacity: 1;
+  }
+}
+
+/* Touch-only devices: keep the View Project button visible on the active card */
+@media (hover: none) {
+  .slide.active .slide-overlay {
+    opacity: 1;
+  }
+}
