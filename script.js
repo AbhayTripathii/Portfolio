@@ -1,4 +1,10 @@
-// ================== Page Loader ==================
+/* ============================================================
+   SCRIPT — Abhay Tripathi portfolio
+   Sections: LOADER · NAVIGATION · SHARE · SCROLL · ANIMATIONS ·
+             HERO · WORK (slider) · PROJECT MODAL · FOOTER
+   ============================================================ */
+
+/* ======================= LOADER ======================= */
 (function () {
   const loader = document.getElementById("pageLoader");
   if (!loader) return;
@@ -25,80 +31,23 @@
   }
 })();
 
-// ================== Mobile Nav Toggle ==================
+/* ======================= NAVIGATION ======================= */
 document.addEventListener("DOMContentLoaded", () => {
   const sidebar = document.getElementById("sidebar");
   const navToggle = document.getElementById("nav-toggle");
   const navClose = document.getElementById("nav-close");
   const navLinks = document.querySelectorAll(".nav-link");
 
-  if (navToggle) {
-    navToggle.addEventListener("click", () => {
-      sidebar.classList.add("show-sidebar");
-    });
-  }
+  navToggle?.addEventListener("click", () => sidebar.classList.add("show-sidebar"));
+  navClose?.addEventListener("click", () => sidebar.classList.remove("show-sidebar"));
 
-  if (navClose) {
-    navClose.addEventListener("click", () => {
-      sidebar.classList.remove("show-sidebar");
-    });
-  }
-
-  // Close sidebar when a nav link is clicked (mobile)
+  // Close the mobile menu when a link is tapped
   navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      sidebar.classList.remove("show-sidebar");
-    });
+    link.addEventListener("click", () => sidebar.classList.remove("show-sidebar"));
   });
 });
 
-// ================== Sidebar Share Button ==================
-document.addEventListener("DOMContentLoaded", () => {
-  const shareBtn = document.querySelector(".btn-share");
-
-  if (shareBtn) {
-    shareBtn.addEventListener("click", async () => {
-      const shareData = {
-        title: "Abhay Tripathi's Portfolio",
-        text: "Check out this awesome portfolio by Abhay Tripathi!",
-        url: window.location.href,
-      };
-
-      if (navigator.share) {
-        try {
-          await navigator.share(shareData);
-          console.log("Portfolio shared successfully!");
-        } catch (err) {
-          console.log("Share cancelled or failed:", err);
-        }
-      } else {
-        try {
-          await navigator.clipboard.writeText(window.location.href);
-          showToast("🔗 Link copied to clipboard!");
-        } catch (err) {
-          alert("Could not copy link. Please try manually.");
-        }
-      }
-    });
-  }
-
-  // 🔹 Toast message function
-  function showToast(message) {
-    const toast = document.createElement("div");
-    toast.className = "toast-message";
-    toast.textContent = message;
-    document.body.appendChild(toast);
-    setTimeout(() => {
-      toast.classList.add("show");
-    }, 100);
-    setTimeout(() => {
-      toast.classList.remove("show");
-      setTimeout(() => toast.remove(), 300);
-    }, 2000);
-  }
-});
-
-// ================== Scroll Active Link ==================
+// Highlight the nav link of the section in view
 const sections = document.querySelectorAll("section[id]");
 
 function scrollActive() {
@@ -106,7 +55,7 @@ function scrollActive() {
 
   sections.forEach((current) => {
     const sectionHeight = current.offsetHeight;
-    const sectionTop = current.offsetTop - 50; // adjust for nav height
+    const sectionTop = current.offsetTop - 50; // offset for the nav height
     const sectionId = current.getAttribute("id");
     const navLink = document.querySelector(`.nav-menu a[href*=${sectionId}]`);
     if (!navLink) return;
@@ -119,16 +68,56 @@ function scrollActive() {
   });
 }
 
-// Run on scroll
 window.addEventListener("scroll", scrollActive);
 
-// ================== GSAP Scroll Animations ==================
+/* ======================= SHARE BUTTON ======================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const shareBtn = document.querySelector(".btn-share");
+
+  // Small toast message, e.g. "Link copied"
+  function showToast(message) {
+    const toast = document.createElement("div");
+    toast.className = "toast-message";
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.classList.add("show"), 100);
+    setTimeout(() => {
+      toast.classList.remove("show");
+      setTimeout(() => toast.remove(), 300);
+    }, 2000);
+  }
+
+  shareBtn?.addEventListener("click", async () => {
+    const shareData = {
+      title: "Abhay Tripathi's Portfolio",
+      text: "Check out this awesome portfolio by Abhay Tripathi!",
+      url: window.location.href,
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (err) {
+        // User cancelled the share sheet — nothing to do
+      }
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast("🔗 Link copied to clipboard!");
+    } catch (err) {
+      alert("Could not copy link. Please try manually.");
+    }
+  });
+});
+
+/* ======================= ANIMATIONS (GSAP) ======================= */
 document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger);
 
-  // ===== Desktop/Tablet (scroll animations with ScrollTrigger) =====
   if (window.innerWidth > 768) {
-    // Animate each section container
+    // Desktop / tablet: animate on scroll
     gsap.utils.toArray("section").forEach((section) => {
       gsap.from(section, {
         y: 60,
@@ -137,13 +126,12 @@ document.addEventListener("DOMContentLoaded", () => {
         ease: "power3.out",
         scrollTrigger: {
           trigger: section,
-          start: "top 90%", // appear earlier
+          start: "top 90%",
           toggleActions: "play none none reverse",
         },
       });
     });
 
-    // Animate section titles
     gsap.utils.toArray(".section-title").forEach((title) => {
       gsap.from(title, {
         y: -40,
@@ -158,26 +146,20 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // Animate cards, boxes, contact items, skills
-    gsap.utils
-      .toArray(
-        ".project-card, .service-card, .contact-item, .about-box, .skill, .skill-tag",
-      )
-      .forEach((el) => {
-        gsap.from(el, {
-          y: 40,
-          opacity: 0,
-          duration: 0.9,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 95%", // fire earlier (before reaching top)
-            toggleActions: "play none none reverse",
-          },
-        });
+    gsap.utils.toArray(".about-box, .skill").forEach((el) => {
+      gsap.from(el, {
+        y: 40,
+        opacity: 0,
+        duration: 0.9,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 95%",
+          toggleActions: "play none none reverse",
+        },
       });
+    });
 
-    // Timeline items
     gsap.utils.toArray(".timeline-item").forEach((item, i) => {
       gsap.from(item, {
         x: i % 2 === 0 ? -100 : 100,
@@ -190,51 +172,39 @@ document.addEventListener("DOMContentLoaded", () => {
         },
       });
     });
-  }
-
-  // ===== Mobile (fade-in without scroll trigger) =====
-  else {
-    // Fade-in all sections immediately
+  } else {
+    // Mobile: staggered fade-in, no scroll trigger
     gsap.utils.toArray("section").forEach((section, i) => {
       gsap.from(section, {
         y: 40,
         opacity: 0,
         duration: 0.8,
         ease: "power2.out",
-        delay: i * 0.2, // stagger sections
+        delay: i * 0.2,
       });
     });
 
-    // Fade-in titles
     gsap.utils.toArray(".section-title").forEach((title, i) => {
       gsap.from(title, {
         y: 20,
-        opacity: 100,
         duration: 0.6,
         ease: "power2.out",
         delay: 0.5 + i * 0.15,
       });
     });
 
-    // Cards, boxes, skills, etc.
-    gsap.utils
-      .toArray(
-        ".project-card, .service-card, .contact-item, .about-box, .skill, .skill-tag",
-      )
-      .forEach((el, i) => {
-        gsap.from(el, {
-          y: 30,
-          opacity: 100,
-          duration: 0.7,
-          ease: "power2.out",
-          delay: 0.6 + i * 0.1,
-        });
+    gsap.utils.toArray(".about-box, .skill").forEach((el, i) => {
+      gsap.from(el, {
+        y: 30,
+        opacity: 0,
+        duration: 0.7,
+        ease: "power2.out",
+        delay: 0.6 + i * 0.1,
       });
+    });
   }
 
-  // ================== Always Active Animations ==================
-
-  // Skill fill shine
+  // Always-on: shine sweep across the skill bars
   gsap.utils.toArray(".skill-fill").forEach((bar) => {
     gsap.to(bar, {
       "--shine-x": "120%",
@@ -244,50 +214,30 @@ document.addEventListener("DOMContentLoaded", () => {
       delay: Math.random() * 1.5,
     });
   });
+});
 
-  // Floating social icons
-  gsap.to(".social-icon", {
-    y: -8,
-    repeat: -1,
-    yoyo: true,
-    duration: 0.5,
-    ease: "sine.inOut",
-    stagger: 0.3,
-  });
+/* ======================= SCROLL EFFECTS ======================= */
 
-  // Project card hover tilt effect (desktop only)
-  if (window.innerWidth > 768) {
-    document.querySelectorAll(".project-card").forEach((card) => {
-      card.addEventListener("mousemove", (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const rotateX = (y / rect.height - 0.5) * 10;
-        const rotateY = (x / rect.width - 0.5) * 10;
-        gsap.to(card, {
-          rotationX: -rotateX,
-          rotationY: rotateY,
-          duration: 0.3,
-        });
-      });
-      card.addEventListener("mouseleave", () => {
-        gsap.to(card, { rotationX: 0, rotationY: 0, duration: 0.5 });
-      });
+// Hero content drifts up and fades as you scroll away from it
+(function () {
+  const heroContent = document.getElementById("heroContent");
+  if (!heroContent) return;
+
+  let ticking = false;
+
+  window.addEventListener("scroll", () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const scrollY = window.pageYOffset;
+      heroContent.style.transform = `translateY(${scrollY * 0.12}px)`;
+      heroContent.style.opacity = Math.max(0, 1 - scrollY / 500);
+      ticking = false;
     });
-  }
-});
-
-window.addEventListener("scroll", () => {
-  const cards = document.querySelectorAll(".info-card");
-  cards.forEach((card) => {
-    const rect = card.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 100) {
-      card.style.opacity = "1";
-      card.style.transform = "translateY(0) scale(1)";
-    }
   });
-});
+})();
 
+/* ======================= FOOTER ======================= */
 document.addEventListener("DOMContentLoaded", () => {
   const quotes = [
     "Every bug fixed is progress",
@@ -324,37 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// ================== Parallax Scroll Effect ==================
-(function () {
-  const bg = document.getElementById("parallaxBg");
-  const heroContent = document.getElementById("heroContent");
-
-  if (!bg) return;
-
-  let ticking = false;
-
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        const scrollY = window.pageYOffset;
-
-        // Background moves slower than scroll = parallax
-        bg.style.transform = `translateY(${scrollY * 0.45}px)`;
-
-        // Content moves slightly upward as you scroll
-        if (heroContent) {
-          heroContent.style.transform = `translateY(${scrollY * 0.12}px)`;
-          heroContent.style.opacity = Math.max(0, 1 - scrollY / 500);
-        }
-
-        ticking = false;
-      });
-      ticking = true;
-    }
-  });
-})();
-
-// ================== Project Slider (with category filter) ==================
+/* ======================= WORK — PROJECT SLIDER ======================= */
 document.addEventListener("DOMContentLoaded", () => {
   const track = document.getElementById("sliderTrack");
   const dotsContainer = document.getElementById("sliderDots");
@@ -362,15 +282,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const workDesc = document.getElementById("workDesc");
   if (!track) return;
 
+  // Text shown under the category buttons
   const categoryInfo = {
     development: {
-      desc: "Responsive, interactive websites built from scratch — from e-commerce clones to a real-time attendance system using GPS and Face Recognition.",
+      desc: "I build websites with a designer's eye and a developer's precision — clean layouts, smooth interactions, and code that stays readable. From e-commerce builds to a GPS and Face Recognition attendance system, I focus on making things work well.",
     },
     uiux: {
-      desc: "Figma prototypes and UI explorations focused on clean layouts and flows that feel natural to use.",
+      desc: "This is where I'm at my best. I care about spacing, hierarchy, and the small details that make a screen feel right — every flow is designed to feel natural to use, not just look good.",
     },
     graphic: {
-      desc: "Posters, logos, and social media designs crafted in Adobe Illustrator and Photoshop.",
+      desc: "Posters, logos, and social media designs built with a strong eye for composition, color, and type — crafted in Illustrator and Photoshop to be noticed and remembered.",
     },
   };
 
@@ -378,17 +299,15 @@ document.addEventListener("DOMContentLoaded", () => {
   let slides = allSlides;
   let current = 0;
 
-  // 3D tilt on hover (desktop only) — the active slide's glow makes the effect pop
+  // 3D tilt on hover (mouse devices only)
   if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
     allSlides.forEach((slide) => {
       slide.addEventListener("mousemove", (e) => {
         const rect = slide.getBoundingClientRect();
         const px = (e.clientX - rect.left) / rect.width;
         const py = (e.clientY - rect.top) / rect.height;
-        const rotateY = (px - 0.5) * 16;
-        const rotateX = (py - 0.5) * -16;
-        slide.style.setProperty("--rx", `${rotateX}deg`);
-        slide.style.setProperty("--ry", `${rotateY}deg`);
+        slide.style.setProperty("--rx", `${(py - 0.5) * -16}deg`);
+        slide.style.setProperty("--ry", `${(px - 0.5) * 16}deg`);
       });
       slide.addEventListener("mouseleave", () => {
         slide.style.setProperty("--rx", "0deg");
@@ -402,7 +321,6 @@ document.addEventListener("DOMContentLoaded", () => {
     slides.forEach((_, i) => {
       const dot = document.createElement("span");
       dot.className = "dot" + (i === 0 ? " active" : "");
-      dot.dataset.dot = i;
       dot.addEventListener("click", () => {
         current = i;
         updateSlider();
@@ -414,14 +332,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateSlider() {
     slides.forEach((slide, i) => {
       slide.classList.toggle("active", i === current);
-      const isPeek =
-        slides.length > 1 && i === (current + 1) % slides.length;
-      slide.classList.toggle("peek", isPeek);
+      slide.classList.toggle("peek", slides.length > 1 && i === (current + 1) % slides.length);
     });
     const activeSlide = slides[current];
     const offset = activeSlide ? activeSlide.offsetLeft : 0;
     track.style.transform = `translateX(-${offset}px)`;
-    Array.from(dotsContainer.querySelectorAll(".dot")).forEach((d, i) =>
+    dotsContainer.querySelectorAll(".dot").forEach((d, i) =>
       d.classList.toggle("active", i === current),
     );
   }
@@ -429,8 +345,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function applyFilter(filter) {
     current = 0;
     allSlides.forEach((slide) => {
-      const match = slide.dataset.category === filter;
-      slide.classList.toggle("hidden-slide", !match);
+      slide.classList.toggle("hidden-slide", slide.dataset.category !== filter);
     });
     slides = allSlides.filter((s) => !s.classList.contains("hidden-slide"));
     buildDots();
@@ -438,9 +353,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function setCategory(filter) {
-    catButtons.forEach((b) =>
-      b.classList.toggle("active", b.dataset.filter === filter),
-    );
+    catButtons.forEach((b) => b.classList.toggle("active", b.dataset.filter === filter));
     if (workDesc && categoryInfo[filter]) {
       workDesc.textContent = categoryInfo[filter].desc;
     }
@@ -460,7 +373,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateSlider();
   });
 
-  // Event delegation so clicks keep working after re-filtering
+  // Clicking a visible card brings it to the front
   track.addEventListener("click", (e) => {
     const slideEl = e.target.closest(".slide");
     if (!slideEl || slideEl.classList.contains("hidden-slide")) return;
@@ -485,15 +398,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Keep the active card aligned if the viewport size changes (e.g. mobile breakpoint)
-  window.addEventListener("resize", () => updateSlider());
+  // Keep the active card aligned when the viewport changes size
+  window.addEventListener("resize", updateSlider);
 
-  // Start on Development category
   setCategory("development");
 });
 
-// ================== Project Modal ==================
+/* ======================= PROJECT MODAL ======================= */
 document.addEventListener("DOMContentLoaded", () => {
+  // Figma links for the two UI/UX projects.
+  const FIGMA_LOGIN = "https://www.figma.com/design/mBUgN5ZVRgJp8fkwyZn7y7/";
+  const FIGMA_FRESHMART = "https://www.figma.com/design/mBUgN5ZVRgJp8fkwyZn7y7/Shared-file?node-id=2005-24";
+
+  // Project data. type "design" = Figma project (embed + link), otherwise a code project.
   const projectsData = {
     amazon: {
       title: "Amazon Clone",
@@ -559,9 +476,13 @@ document.addEventListener("DOMContentLoaded", () => {
       skills: ["Figma", "UI Design", "Prototyping"],
       date: "Feb 2025",
       type: "design",
-      link: "https://www.figma.com/design/mBUgN5ZVRgJp8fkwyZn7y7/",
+      link: FIGMA_LOGIN,
       linkLabel: "View on Figma",
-      screenshots: ["assets/Picture/4-project.png"],
+      screenshots: [
+        "assets/Picture/LoginUI/1.png",
+        "assets/Picture/LoginUI/2.png",
+        "assets/Picture/LoginUI/3.png",
+      ],
     },
     freshmart: {
       title: "FreshMart Grocery",
@@ -570,11 +491,28 @@ document.addEventListener("DOMContentLoaded", () => {
       skills: ["Figma", "UI Design", "Prototyping"],
       date: "2026",
       type: "design",
-      link: "projects/freshmart/index.html",
+      link: FIGMA_FRESHMART,
       linkLabel: "View on Figma",
-      screenshots: ["assets/Picture/2-project.png"],
+      screenshots: [
+        "assets/Picture/FreshUI/1.png",
+        "assets/Picture/FreshUI/2.png",
+        "assets/Picture/FreshUI/3.png",
+        "assets/Picture/FreshUI/4.png",
+      ],
     },
   };
+
+  // Card "Figma" buttons open the same link as the modal button
+  document.querySelectorAll(".slide").forEach((slide) => {
+    const viewBtn = slide.querySelector(".view-project-btn");
+    const project = viewBtn && projectsData[viewBtn.dataset.project];
+    const figmaLink = slide.querySelector(".slide-gh");
+    if (project && project.type === "design" && figmaLink) {
+      figmaLink.href = project.link;
+      figmaLink.target = "_blank";
+      figmaLink.rel = "noopener";
+    }
+  });
 
   const backdrop = document.getElementById("projModalBackdrop");
   const closeBtn = document.getElementById("projModalClose");
@@ -587,6 +525,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("projModalTag").textContent = p.tag;
     document.getElementById("projModalDesc").textContent = p.desc;
     document.getElementById("projModalDate").textContent = p.date;
+
     const ghBtn = document.getElementById("projModalGithub");
     if (p.type === "design") {
       ghBtn.href = p.link || "#";
@@ -596,15 +535,19 @@ document.addEventListener("DOMContentLoaded", () => {
       ghBtn.innerHTML = `<i class="fab fa-github"></i> View Code on GitHub`;
     }
 
-    const skillsEl = document.getElementById("projModalSkills");
-    skillsEl.innerHTML = p.skills
+    document.getElementById("projModalSkills").innerHTML = p.skills
       .map((s) => `<span class="skill-pill">${s}</span>`)
       .join("");
 
     const screenshots = document.getElementById("projScreenshots");
-    screenshots.innerHTML = p.screenshots
-      .map((src) => `<img src="${src}" alt="${p.title}" />`)
-      .join("");
+    if (p.embed) {
+      // Live Figma design (shared as "Anyone can view")
+      screenshots.innerHTML = `<iframe class="proj-embed" src="${p.embed}" title="${p.title}" allowfullscreen loading="lazy"></iframe>`;
+    } else {
+      screenshots.innerHTML = p.screenshots
+        .map((src) => `<img src="${src}" alt="${p.title}" />`)
+        .join("");
+    }
 
     backdrop.classList.add("open");
     document.body.style.overflow = "hidden";
