@@ -435,9 +435,9 @@ document.addEventListener("DOMContentLoaded", () => {
       date: "Jan 2025",
       github: "https://www.github.com",
       screenshots: [
-        "assets/picture/amazon/1.png",
-        "assets/picture/amazon/2.png",
-        "assets/picture/amazon/3.png",
+        "assets/Picture/amazon/1.png",
+        "assets/Picture/amazon/2.png",
+        "assets/Picture/amazon/3.png",
       ],
     },
     netflix: {
@@ -448,10 +448,10 @@ document.addEventListener("DOMContentLoaded", () => {
       date: "Feb 2025",
       github: "https://www.github.com",
       screenshots: [
-        "assets/picture/netflix/1.png",
-        "assets/picture/netflix/2.png",
-        "assets/picture/netflix/3.png",
-        "assets/picture/netflix/4.png",
+        "assets/Picture/netflix/1.png",
+        "assets/Picture/netflix/2.png",
+        "assets/Picture/netflix/3.png",
+        "assets/Picture/netflix/4.png",
       ],
     },
     burger: {
@@ -462,14 +462,14 @@ document.addEventListener("DOMContentLoaded", () => {
       date: "Aug 2025",
       github: "https://www.github.com",
       screenshots: [
-        "assets/picture/burger/1.png",
-        "assets/picture/burger/2.png",
-        "assets/picture/burger/3.png",
-        "assets/picture/burger/4.png",
-        "assets/picture/burger/5.png",
-        "assets/picture/burger/6.png",
-        "assets/picture/burger/7.png",
-        "assets/picture/burger/8.png",
+        "assets/Picture/burger/1.png",
+        "assets/Picture/burger/2.png",
+        "assets/Picture/burger/3.png",
+        "assets/Picture/burger/4.png",
+        "assets/Picture/burger/5.png",
+        "assets/Picture/burger/6.png",
+        "assets/Picture/burger/7.png",
+        "assets/Picture/burger/8.png",
       ],
     },
     attend: {
@@ -480,8 +480,8 @@ document.addEventListener("DOMContentLoaded", () => {
       date: "2026",
       github: "https://github.com/AbhayTripathii/attendance-app",
       screenshots: [
-        "assets/picture/attend/1.png",
-        "assets/picture/attend/2.png",
+        "assets/Picture/attend/1.png",
+        "assets/Picture/attend/2.png",
       ],
     },
     loginUI: {
