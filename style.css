@@ -434,14 +434,35 @@ input {
   display: inline-block;
   opacity: 0;
   transform: translateY(40px) skewY(6deg);
-  animation: loaderLetterIn 0.7s cubic-bezier(0.22, 0.68, 0, 1.2) forwards;
-  animation-delay: calc(var(--i) * 0.09s + 0.2s);
+  animation:
+  loaderLetterIn 0.7s cubic-bezier(0.22, 0.68, 0, 1.2) forwards,
+  loaderFlash 0.6s ease forwards;
+  animation-delay:
+  calc(var(--i) * 0.09s + 0.2s),
+  calc(var(--i) * 0.09s + 0.9s);
 }
 
 @keyframes loaderLetterIn {
   to {
   opacity: 1;
   transform: translateY(0) skewY(0);
+  }
+}
+
+/* Each letter flashes red as it lands, then fades back to outline */
+@keyframes loaderFlash {
+  0% {
+  color: transparent;
+  -webkit-text-stroke-color: #fff;
+  }
+  35% {
+  color: #e63946;
+  -webkit-text-stroke-color: #e63946;
+  text-shadow: 0 0 30px rgba(230, 57, 70, 0.9);
+  }
+  100% {
+  color: transparent;
+  -webkit-text-stroke-color: #fff;
   }
 }
 
@@ -597,7 +618,7 @@ input {
   display: inline-block;
   opacity: 0;
   transform: translateY(110%);
-  animation: ltrIn 0.7s cubic-bezier(0.22, 0.68, 0, 1.1) forwards;
+  animation: ltrBlast 1s cubic-bezier(0.2, 0.9, 0.2, 1.1) forwards;
 }
 
 .hero-first .ltr:nth-child(1) {
@@ -652,10 +673,26 @@ input {
   animation-delay: 1.89s;
 }
 
-@keyframes ltrIn {
-  to {
+/* Letters rush in from big and blurred, flash red, then snap into place */
+@keyframes ltrBlast {
+  0% {
+  opacity: 0;
+  transform: translateY(80%) scale(1.8) rotate(-8deg);
+  filter: blur(14px);
+  text-shadow: 0 0 70px rgba(230, 57, 70, 1);
+  }
+  55% {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(0.94) rotate(0deg);
+  filter: blur(0);
+  }
+  75% {
+  transform: scale(1.04);
+  }
+  100% {
+  opacity: 1;
+  transform: none;
+  filter: none;
   }
 }
 

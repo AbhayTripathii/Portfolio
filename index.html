@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -18,82 +18,75 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Montserrat:wght@300;400;500;600;700;800&family=Syne:wght@800&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Montserrat:wght@300;400;500;600;700;800&family=Syne:wght@800&display=swap" rel="stylesheet">
   </head>
   <body>
-    <!-- ================================ LOADER ================================ -->
-    <div class="page-loader" id="pageLoader" aria-label="Portfolio">
-      <div class="loader-word">
-        <span style="--i: 0">P</span><span style="--i: 1">O</span
-        ><span style="--i: 2">R</span><span style="--i: 3">T</span
-        ><span style="--i: 4">F</span><span style="--i: 5">O</span
-        ><span style="--i: 6">L</span><span style="--i: 7">I</span
-        ><span style="--i: 8">O</span>
-      </div>
+  <!-- ================================ LOADER ================================ -->
+  <div class="page-loader" id="pageLoader" aria-label="Portfolio">
+    <div class="loader-word">
+      <span style="--i:0">P</span><span style="--i:1">O</span><span style="--i:2">R</span><span style="--i:3">T</span><span style="--i:4">F</span><span style="--i:5">O</span><span style="--i:6">L</span><span style="--i:7">I</span><span style="--i:8">O</span>
     </div>
+  </div>
 
-    <!-- ================================ NAVIGATION ================================ -->
-    <!-- Hamburger toggle for mobile -->
-    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu">
-      <i class="fa-solid fa-bars"></i>
-    </button>
+      <!-- ================================ NAVIGATION ================================ -->
+      <!-- Hamburger toggle for mobile -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
 
-    <aside class="sidebar" id="sidebar">
-      <nav class="nav">
-        <div class="nav-logo">
-          <a href="#" class="nav-logo"
-            ><img src="assets/Picture/1-logo.png" alt=""
-          /></a>
-        </div>
+      <aside class="sidebar" id="sidebar">
+        <nav class="nav">
+            <div class="nav-logo">
+              <a href="#" class="nav-logo"><img src="assets/Picture/1-logo.png" alt=""
+              /></a>
+            </div>
 
-        <!-- Close button inside sidebar for mobile -->
-        <button class="nav-close" id="nav-close" aria-label="Close menu">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
+            <!-- Close button inside sidebar for mobile -->
+            <button class="nav-close" id="nav-close" aria-label="Close menu">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
 
-        <div class="nav-menu">
-          <div class="menu">
-            <ul class="nav-list">
-              <li class="nav-item">
-                <a href="#home" class="nav-link active-link">Home</a>
-              </li>
+            <div class="nav-menu">
+                <div class="menu">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#home" class="nav-link active-link">Home</a>
+                        </li>
 
-              <li class="nav-item">
-                <a href="#about" class="nav-link">About</a>
-              </li>
+                        <li class="nav-item">
+                            <a href="#about" class="nav-link">About</a>
+                        </li>
 
-              <li class="nav-item">
-                <a href="#skills" class="nav-link">Skills</a>
-              </li>
+                        <li class="nav-item">
+                            <a href="#skills" class="nav-link">Skills</a>
+                        </li>
 
-              <li class="nav-item">
-                <a href="#work" class="nav-link">Work</a>
-              </li>
+                        <li class="nav-item">
+                            <a href="#work" class="nav-link">Work</a>
+                        </li>
 
-              <li class="nav-item">
-                <a href="#services" class="nav-link">Services</a>
-              </li>
+                        <li class="nav-item">
+                            <a href="#services" class="nav-link">Services</a>
+                        </li>
 
-              <li class="nav-item">
-                <a href="#contact" class="nav-link">Contact</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+                        <li class="nav-item">
+                            <a href="#contact" class="nav-link">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-        <div class="btn-share">
-          <i class="fa-solid fa-share-nodes social-share"></i>
-        </div>
-      </nav>
-    </aside>
+            <div class="btn-share">
+              <i class="fa-solid fa-share-nodes social-share"></i>
+            </div>
+        </nav>
+      </aside>
     <main class="main">
       <!-- ================================ HERO ================================ -->
       <section class="home" id="home">
+
         <!-- Animated WebGL mesh background (shader.js) -->
         <canvas class="hero-shader" id="heroShader" aria-hidden="true"></canvas>
 
@@ -107,29 +100,20 @@
         <div class="hero-grain"></div>
 
         <!-- Logo watermark, right centre -->
-        <img
-          src="assets/picture/1-logo.png"
-          alt=""
-          class="hero-logo-bg"
-          aria-hidden="true"
-        />
+        <img src="assets/picture/1-logo.png" alt="" class="hero-logo-bg" aria-hidden="true" />
 
         <div class="hero-type-wrap" id="heroContent">
+
           <!-- Name — split letters for animation -->
           <div class="hero-name-block">
             <div class="hero-name-row">
               <h1 class="hero-first">
-                <span class="ltr">A</span><span class="ltr">b</span
-                ><span class="ltr">h</span><span class="ltr">a</span
-                ><span class="ltr">y</span>
+                <span class="ltr">A</span><span class="ltr">b</span><span class="ltr">h</span><span class="ltr">a</span><span class="ltr">y</span>
               </h1>
             </div>
             <div class="hero-name-row last-row">
               <h1 class="hero-last">
-                <span class="ltr">T</span><span class="ltr">r</span
-                ><span class="ltr">i</span><span class="ltr">p</span
-                ><span class="ltr">a</span><span class="ltr">t</span
-                ><span class="ltr">h</span><span class="ltr">i</span>
+                <span class="ltr">T</span><span class="ltr">r</span><span class="ltr">i</span><span class="ltr">p</span><span class="ltr">a</span><span class="ltr">t</span><span class="ltr">h</span><span class="ltr">i</span>
               </h1>
             </div>
           </div>
@@ -142,36 +126,23 @@
           </div>
 
           <!-- desc -->
-          <p class="hero-desc-text">
-            Crafting clean, responsive &amp; user-focused<br />web experiences
-            from code to design.
-          </p>
+          <p class="hero-desc-text">Crafting clean, responsive &amp; user-focused<br>web experiences from code to design.</p>
 
           <!-- CTAs -->
           <div class="hero-actions">
-            <a href="#work" class="hero-btn-primary"
-              >View My Work <i class="fa-solid fa-arrow-right"></i
-            ></a>
+            <a href="#work" class="hero-btn-primary">View My Work <i class="fa-solid fa-arrow-right"></i></a>
             <a href="#contact" class="hero-btn-ghost">Let&#39;s Talk</a>
           </div>
 
           <!-- socials -->
           <div class="hero-social">
-            <a
-              href="https://www.linkedin.com/in/abhay-tripathi-8966972bb/"
-              target="_blank"
-              class="hero-social-link"
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
+            <a href="https://www.linkedin.com/in/abhay-tripathi-8966972bb/" target="_blank" class="hero-social-link"><i class="fab fa-linkedin-in"></i></a>
             <span class="hero-social-divider"></span>
-            <a
-              href="https://github.com/AbhayTripathii"
-              target="_blank"
-              class="hero-social-link"
-              ><i class="fab fa-github"></i
-            ></a>
+            <a href="https://github.com/AbhayTripathii" target="_blank" class="hero-social-link"><i class="fab fa-github"></i></a>
           </div>
+
         </div>
+
       </section>
 
       <!-- ================================ ABOUT ME ================================ -->
@@ -194,47 +165,47 @@
             <div class="second-content">
               <h3>Hi, <span class="head">I'm Abhay Tripathi</span></h3>
               <p>
-                Pixels have feelings — and I make sure they're happy. I'm Abhay,
-                a
-                <strong>UI/UX Designer</strong> who obsesses over the details
-                everyone else scrolls past: the 2px gap, the exact shade of red,
-                the button that just <em>feels</em> right to click. My job is
-                turning "it's just an idea" into interfaces people actually
-                enjoy using — not just look at. And because a good designer
-                should never say "that's a developer problem," I bring my own
-                designs to life with HTML, CSS, and JavaScript — from e-commerce
-                clones to a real attendance system that verifies you're really
-                you using GPS and Face Recognition. Still early in the journey,
-                still ridiculously curious, and always one Figma frame away from
-                the next obsession.
+                Pixels have feelings — and I make sure they're happy. I'm Abhay, a
+                <strong>UI/UX Designer</strong> who obsesses over the details everyone else
+                scrolls past: the 2px gap, the exact shade of red, the button that just
+                <em>feels</em> right to click. My job is turning "it's just an idea" into
+                interfaces people actually enjoy using — not just look at. And because a good
+                designer should never say "that's a developer problem," I bring my own designs
+                to life with HTML, CSS, and JavaScript — from e-commerce clones to a real
+                attendance system that verifies you're really you using GPS and Face Recognition.
+                Still early in the journey, still ridiculously curious, and always one Figma
+                frame away from the next obsession.
               </p>
             </div>
 
-            <!-- core technologies -->
-            <div class="core-section">
-              <h4 class="core-title">Core Technologies</h4>
-              <div class="core-grid">
-                <span class="core-tag">HTML5, CSS3, JavaScript (ES6+)</span>
-                <span class="core-tag">Git, GitHub, VS Code</span>
-                <span class="core-tag">Node.js (Basics)</span>
-                <span class="core-tag">MySQL</span>
+              <!-- core technologies -->
+              <div class="core-section">
+                <h4 class="core-title">Core Technologies</h4>
+                <div class="core-grid">
+                  <span class="core-tag">HTML5, CSS3, JavaScript (ES6+)</span>
+                  <span class="core-tag">Git, GitHub, VS Code</span>
+                  <span class="core-tag">Node.js (Basics)</span>
+                  <span class="core-tag">MySQL</span>
+                </div>
               </div>
-            </div>
-            <div class="about-info">
-              <div class="about-box">
-                <h3 class="about-title">Experience</h3>
-                <span class="about-subtitle">Entry Level</span>
+              <div class="about-info">
+                <div class="about-box">
+                  <h3 class="about-title">Experience</h3>
+                  <span class="about-subtitle">Entry Level</span>
+                </div>
+                <div class="about-box">
+                  <h3 class="about-title">Projects</h3>
+                  <span class="about-subtitle">4 + </span>
+                </div>
+                <div class="about-box">
+                  <h3 class="about-title">Learning</h3>
+                  <span class="about-subtitle">Ongoing</span>
+                </div>
               </div>
-              <div class="about-box">
-                <h3 class="about-title">Projects</h3>
-                <span class="about-subtitle">4 + </span>
-              </div>
-              <div class="about-box">
-                <h3 class="about-title">Learning</h3>
-                <span class="about-subtitle">Ongoing</span>
-              </div>
-            </div>
           </div>
+
+
+          
         </div>
       </section>
       <!-- ================================ SKILLS ================================ -->
@@ -253,7 +224,7 @@
                 <div class="skill-fill" style="width: 80%"></div>
               </div>
             </div>
-
+            
             <div class="skill">
               <div class="skill-title">CSS <span>80%</span></div>
               <div class="skill-bar">
@@ -304,6 +275,7 @@
               </div>
             </div>
 
+
             <div class="skill">
               <div class="skill-title">Wordpress <span>50%</span></div>
               <div class="skill-bar">
@@ -322,9 +294,7 @@
               <i class="fa-solid fa-pen-to-square"></i>&nbsp;&nbsp;Editing Tools
             </h3>
             <div class="skill">
-              <div class="skill-title">
-                VN/CapCut Mobile Apps <span>50%</span>
-              </div>
+              <div class="skill-title">VN/CapCut Mobile Apps <span>50%</span></div>
               <div class="skill-bar">
                 <div class="skill-fill" style="width: 50%"></div>
               </div>
@@ -368,6 +338,7 @@
                   ><i class="uil uil-calendar-alt"></i>2023 - 2026</span
                 >
               </div>
+
             </div>
           </div>
 
@@ -380,20 +351,17 @@
               <div class="timeline-item">
                 <div class="circle-dot"></div>
                 <h3 class="timeline-title">Graphic Designer (Freelance)</h3>
-                <p class="timeline-text">
-                  <b> Karunadu Technologies Private Limited </b>
-                </p>
+                <p class="timeline-text"><b> Karunadu Technologies Private Limited </b> </p>
                 <span class="timeline-date"
                   ><i class="uil uil-calendar-alt"></i>6+ Months</span
                 >
               </div>
-
+            
+            
               <div class="timeline-item">
                 <div class="circle-dot"></div>
                 <h3 class="timeline-title">Graphic Designer</h3>
-                <p class="timeline-text">
-                  <b>Nowgray IT Services Private Limited</b>
-                </p>
+                <p class="timeline-text"><b>Nowgray IT Services Private Limited</b> </p>
                 <span class="timeline-date"
                   ><i class="uil uil-calendar-alt"></i>6+ Months</span
                 >
@@ -402,17 +370,17 @@
           </div>
           <div class="experience">
             <h3 class="qualification-title">
-              <i class="uil uil-suitcase"></i>&nbsp;&nbsp;Certifications &
-              Trainings
+              <i class="uil uil-suitcase"></i>&nbsp;&nbsp;Certifications & Trainings
             </h3>
-
+            
             <div class="timeline">
               <div class="timeline-item">
                 <div class="circle-dot"></div>
                 <h3 class="timeline-title">Udemy</h3>
                 <p class="timeline-text">
-                  Adobe Illustrator CC – Advanced Training
+                  Adobe Illustrator CC – Advanced Training 
                 </p>
+                
               </div>
             </div>
             <div class="timeline">
@@ -435,9 +403,7 @@
               <div class="timeline-item">
                 <div class="circle-dot"></div>
                 <h3 class="timeline-title">IIAT Institute (Delhi. India)</h3>
-                <p class="timeline-text">
-                  Advanced Diploma in Computer Applications (ADCA)
-                </p>
+                <p class="timeline-text">Advanced Diploma in Computer Applications (ADCA)</p>
               </div>
             </div>
           </div>
@@ -450,271 +416,142 @@
         <div class="work-layout">
           <div class="work-side">
             <div class="work-cat-list" id="workCatList">
-              <button class="work-cat-item active" data-filter="development">
-                Development
-              </button>
-              <button class="work-cat-item" data-filter="uiux">
-                UI/UX Design
-              </button>
-              <button class="work-cat-item" data-filter="graphic">
-                Graphic Design
-              </button>
+              <button class="work-cat-item active" data-filter="development">Development</button>
+              <button class="work-cat-item" data-filter="uiux">UI/UX Design</button>
+              <button class="work-cat-item" data-filter="graphic">Graphic Design</button>
             </div>
-            <p class="work-desc" id="workDesc">
-              Responsive, interactive websites built from scratch — from
-              e-commerce clones to a real-time attendance system using GPS and
-              Face Recognition.
-            </p>
-            <a
-              href="https://github.com/AbhayTripathii"
-              target="_blank"
-              class="work-cta-btn"
-              >See All Projects</a
-            >
+            <p class="work-desc" id="workDesc">Responsive, interactive websites built from scratch — from e-commerce clones to a real-time attendance system using GPS and Face Recognition.</p>
+            <a href="https://github.com/AbhayTripathii" target="_blank" class="work-cta-btn">See All Projects</a>
           </div>
 
           <div class="slider-container">
             <div class="slider-viewport">
               <div class="slider-track" id="sliderTrack">
-                <div class="slide" data-index="0" data-category="development">
-                  <div class="slide-img-wrap">
-                    <img src="assets/Picture/amazon/1.png" alt="Amazon Clone" />
-                    <div class="slide-overlay">
-                      <button class="view-project-btn" data-project="amazon">
-                        View Project
-                      </button>
-                    </div>
-                  </div>
-                  <div class="slide-foot">
-                    <span class="slide-tag">HTML · CSS</span>
-                    <h3 class="slide-title">Amazon Clone</h3>
-                    <a
-                      href="https://www.github.com"
-                      target="_blank"
-                      class="slide-gh"
-                      ><i class="fab fa-github"></i> GitHub</a
-                    >
-                  </div>
+              <div class="slide" data-index="0" data-category="development">
+                <div class="slide-img-wrap">
+                  <img src="assets/picture/amazon/1.png" alt="Amazon Clone" />
+                  <div class="slide-overlay"><button class="view-project-btn" data-project="amazon">View Project</button></div>
                 </div>
-                <div class="slide" data-index="1" data-category="development">
-                  <div class="slide-img-wrap">
-                    <img
-                      src="assets/Picture/netflix/1.png"
-                      alt="Netflix Clone"
-                    />
-                    <div class="slide-overlay">
-                      <button class="view-project-btn" data-project="netflix">
-                        View Project
-                      </button>
-                    </div>
-                  </div>
-                  <div class="slide-foot">
-                    <span class="slide-tag">HTML · CSS · JS</span>
-                    <h3 class="slide-title">Netflix Login Clone</h3>
-                    <a
-                      href="https://www.github.com"
-                      target="_blank"
-                      class="slide-gh"
-                      ><i class="fab fa-github"></i> GitHub</a
-                    >
-                  </div>
+                <div class="slide-foot">
+                  <span class="slide-tag">HTML · CSS</span>
+                  <h3 class="slide-title">Amazon Clone</h3>
+                  <a href="https://www.github.com" target="_blank" class="slide-gh"><i class="fab fa-github"></i> GitHub</a>
                 </div>
-                <div class="slide" data-index="2" data-category="development">
-                  <div class="slide-img-wrap">
-                    <img src="assets/Picture/burger/1.png" alt="Burger Craft" />
-                    <div class="slide-overlay">
-                      <button class="view-project-btn" data-project="burger">
-                        View Project
-                      </button>
-                    </div>
-                  </div>
-                  <div class="slide-foot">
-                    <span class="slide-tag">HTML · CSS · JS</span>
-                    <h3 class="slide-title">Burger Craft</h3>
-                    <a
-                      href="https://www.github.com"
-                      target="_blank"
-                      class="slide-gh"
-                      ><i class="fab fa-github"></i> GitHub</a
-                    >
-                  </div>
+              </div>
+              <div class="slide" data-index="1" data-category="development">
+                <div class="slide-img-wrap">
+                  <img src="assets/picture/netflix/1.png" alt="Netflix Clone" />
+                  <div class="slide-overlay"><button class="view-project-btn" data-project="netflix">View Project</button></div>
                 </div>
-                <div class="slide" data-index="3" data-category="development">
-                  <div class="slide-img-wrap">
-                    <img
-                      src="assets/Picture/attend/1.png"
-                      alt="Attendance Management System"
-                    />
-                    <div class="slide-overlay">
-                      <button class="view-project-btn" data-project="attend">
-                        View Project
-                      </button>
-                    </div>
-                  </div>
-                  <div class="slide-foot">
-                    <span class="slide-tag">GPS · Face API</span>
-                    <h3 class="slide-title">Attendance Management System</h3>
-                    <a
-                      href="https://github.com/AbhayTripathii/attendance-app"
-                      target="_blank"
-                      class="slide-gh"
-                      ><i class="fab fa-github"></i> GitHub</a
-                    >
-                  </div>
+                <div class="slide-foot">
+                  <span class="slide-tag">HTML · CSS · JS</span>
+                  <h3 class="slide-title">Netflix Login Clone</h3>
+                  <a href="https://www.github.com" target="_blank" class="slide-gh"><i class="fab fa-github"></i> GitHub</a>
                 </div>
+              </div>
+              <div class="slide" data-index="2" data-category="development">
+                <div class="slide-img-wrap">
+                  <img src="assets/picture/burger/1.png" alt="Burger Craft" />
+                  <div class="slide-overlay"><button class="view-project-btn" data-project="burger">View Project</button></div>
+                </div>
+                <div class="slide-foot">
+                  <span class="slide-tag">HTML · CSS · JS</span>
+                  <h3 class="slide-title">Burger Craft</h3>
+                  <a href="https://www.github.com" target="_blank" class="slide-gh"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+              </div>
+              <div class="slide" data-index="3" data-category="development">
+                <div class="slide-img-wrap">
+                  <img src="assets/picture/attend/1.png" alt="Attendance Management System" />
+                  <div class="slide-overlay"><button class="view-project-btn" data-project="attend">View Project</button></div>
+                </div>
+                <div class="slide-foot">
+                  <span class="slide-tag">GPS · Face API</span>
+                  <h3 class="slide-title">Attendance Management System</h3>
+                  <a href="https://github.com/AbhayTripathii/attendance-app" target="_blank" class="slide-gh"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+              </div>
 
-                <div class="slide" data-index="4" data-category="uiux">
-                  <div class="slide-img-wrap">
-                    <img src="assets/Picture/LoginUI/1.png" alt="Login UI" />
-                    <div class="slide-overlay">
-                      <button class="view-project-btn" data-project="loginUI">
-                        View Project
-                      </button>
-                    </div>
-                  </div>
-                  <div class="slide-foot">
-                    <span class="slide-tag">Figma</span>
-                    <h3 class="slide-title">Login UI Design</h3>
-                    <a
-                      href="projects/loginUi/index.html"
-                      target="_blank"
-                      class="slide-gh"
-                      ><i class="fab fa-figma"></i> Figma</a
-                    >
-                  </div>
+              <div class="slide" data-index="4" data-category="uiux">
+                <div class="slide-img-wrap">
+                  <img src="assets/Picture/LoginUI/1.png" alt="Login UI" />
+                  <div class="slide-overlay"><button class="view-project-btn" data-project="loginUI">View Project</button></div>
                 </div>
-                <div class="slide" data-index="5" data-category="uiux">
-                  <div class="slide-img-wrap">
-                    <img
-                      src="assets/Picture/FreshUI/1.png"
-                      alt="FreshMart Grocery"
-                    />
-                    <div class="slide-overlay">
-                      <button class="view-project-btn" data-project="freshmart">
-                        View Project
-                      </button>
-                    </div>
-                  </div>
-                  <div class="slide-foot">
-                    <span class="slide-tag">Figma</span>
-                    <h3 class="slide-title">FreshMart Grocery</h3>
-                    <a
-                      href="projects/freshmart/index.html"
-                      target="_blank"
-                      class="slide-gh"
-                      ><i class="fab fa-figma"></i> Figma</a
-                    >
-                  </div>
+                <div class="slide-foot">
+                  <span class="slide-tag">Figma</span>
+                  <h3 class="slide-title">Login UI Design</h3>
+                  <a href="projects/loginUi/index.html" target="_blank" class="slide-gh"><i class="fab fa-figma"></i> Figma</a>
                 </div>
+              </div>
+              <div class="slide" data-index="5" data-category="uiux">
+                <div class="slide-img-wrap">
+                  <img src="assets/Picture/FreshUI/1.png" alt="FreshMart Grocery" />
+                  <div class="slide-overlay"><button class="view-project-btn" data-project="freshmart">View Project</button></div>
+                </div>
+                <div class="slide-foot">
+                  <span class="slide-tag">Figma</span>
+                  <h3 class="slide-title">FreshMart Grocery</h3>
+                  <a href="projects/freshmart/index.html" target="_blank" class="slide-gh"><i class="fab fa-figma"></i> Figma</a>
+                </div>
+              </div>
 
-                <div class="slide" data-index="6" data-category="graphic">
-                  <div class="slide-img-wrap">
-                    <img
-                      src="assets/Picture/graphic/1.png"
-                      alt="Poster Design"
-                    />
-                    <div class="slide-overlay">
-                      <a
-                        href="assets/Picture/graphic/1.png"
-                        target="_blank"
-                        class="view-project-btn"
-                        >View Design</a
-                      >
-                    </div>
-                  </div>
-                  <div class="slide-foot">
-                    <span class="slide-tag">Illustrator</span>
-                    <h3 class="slide-title">Poster Design</h3>
-                  </div>
+              <div class="slide" data-index="6" data-category="graphic">
+                <div class="slide-img-wrap">
+                  <img src="assets/Picture/graphic/1.png" alt="Poster Design" />
+                  <div class="slide-overlay"><a href="assets/Picture/graphic/1.png" target="_blank" class="view-project-btn">View Design</a></div>
                 </div>
-                <div class="slide" data-index="7" data-category="graphic">
-                  <div class="slide-img-wrap">
-                    <img src="assets/Picture/graphic/2.jpg" alt="Logo Design" />
-                    <div class="slide-overlay">
-                      <a
-                        href="assets/Picture/graphic/2.jpg"
-                        target="_blank"
-                        class="view-project-btn"
-                        >View Design</a
-                      >
-                    </div>
-                  </div>
-                  <div class="slide-foot">
-                    <span class="slide-tag">Illustrator</span>
-                    <h3 class="slide-title">Logo Design</h3>
-                  </div>
+                <div class="slide-foot">
+                  <span class="slide-tag">Illustrator</span>
+                  <h3 class="slide-title">Poster Design</h3>
                 </div>
-                <div class="slide" data-index="8" data-category="graphic">
-                  <div class="slide-img-wrap">
-                    <img
-                      src="assets/Picture/graphic/3.png"
-                      alt="Social Media Last Page"
-                    />
-                    <div class="slide-overlay">
-                      <a
-                        href="assets/Picture/graphic/3.png"
-                        target="_blank"
-                        class="view-project-btn"
-                        >View Design</a
-                      >
-                    </div>
-                  </div>
-                  <div class="slide-foot">
-                    <span class="slide-tag">Photoshop</span>
-                    <h3 class="slide-title">Social Media Last Page</h3>
-                  </div>
+              </div>
+              <div class="slide" data-index="7" data-category="graphic">
+                <div class="slide-img-wrap">
+                  <img src="assets/Picture/graphic/2.jpg" alt="Logo Design" />
+                  <div class="slide-overlay"><a href="assets/Picture/graphic/2.jpg" target="_blank" class="view-project-btn">View Design</a></div>
                 </div>
-                <div class="slide" data-index="9" data-category="graphic">
-                  <div class="slide-img-wrap">
-                    <img
-                      src="assets/Picture/graphic/t.png"
-                      alt="T-Shirt Design"
-                    />
-                    <div class="slide-overlay">
-                      <a
-                        href="assets/Picture/graphic/t.png"
-                        target="_blank"
-                        class="view-project-btn"
-                        >View Design</a
-                      >
-                    </div>
-                  </div>
-                  <div class="slide-foot">
-                    <span class="slide-tag">Illustrator</span>
-                    <h3 class="slide-title">T-Shirt Design</h3>
-                  </div>
+                <div class="slide-foot">
+                  <span class="slide-tag">Illustrator</span>
+                  <h3 class="slide-title">Logo Design</h3>
                 </div>
-                <div class="slide" data-index="10" data-category="graphic">
-                  <div class="slide-img-wrap">
-                    <img
-                      src="assets/Picture/graphic/c.jpg"
-                      alt="Festive Design"
-                    />
-                    <div class="slide-overlay">
-                      <a
-                        href="assets/Picture/graphic/c.jpg"
-                        target="_blank"
-                        class="view-project-btn"
-                        >View Design</a
-                      >
-                    </div>
-                  </div>
-                  <div class="slide-foot">
-                    <span class="slide-tag">Illustrator · Photoshop</span>
-                    <h3 class="slide-title">Festive Design</h3>
-                  </div>
+              </div>
+              <div class="slide" data-index="8" data-category="graphic">
+                <div class="slide-img-wrap">
+                  <img src="assets/Picture/graphic/3.png" alt="Social Media Last Page" />
+                  <div class="slide-overlay"><a href="assets/Picture/graphic/3.png" target="_blank" class="view-project-btn">View Design</a></div>
                 </div>
+                <div class="slide-foot">
+                  <span class="slide-tag">Photoshop</span>
+                  <h3 class="slide-title">Social Media Last Page</h3>
+                </div>
+              </div>
+              <div class="slide" data-index="9" data-category="graphic">
+                <div class="slide-img-wrap">
+                  <img src="assets/Picture/graphic/t.png" alt="T-Shirt Design" />
+                  <div class="slide-overlay"><a href="assets/Picture/graphic/t.png" target="_blank" class="view-project-btn">View Design</a></div>
+                </div>
+                <div class="slide-foot">
+                  <span class="slide-tag">Illustrator</span>
+                  <h3 class="slide-title">T-Shirt Design</h3>
+                </div>
+              </div>
+              <div class="slide" data-index="10" data-category="graphic">
+                <div class="slide-img-wrap">
+                  <img src="assets/Picture/graphic/c.jpg" alt="Festive Design" />
+                  <div class="slide-overlay"><a href="assets/Picture/graphic/c.jpg" target="_blank" class="view-project-btn">View Design</a></div>
+                </div>
+                <div class="slide-foot">
+                  <span class="slide-tag">Illustrator · Photoshop</span>
+                  <h3 class="slide-title">Festive Design</h3>
+                </div>
+              </div>
               </div>
             </div>
 
             <div class="slider-controls">
-              <button class="slider-arrow prev" id="sliderPrev">
-                <i class="fa-solid fa-chevron-left"></i>
-              </button>
+              <button class="slider-arrow prev" id="sliderPrev"><i class="fa-solid fa-chevron-left"></i></button>
               <div class="slider-dots" id="sliderDots"></div>
-              <button class="slider-arrow next" id="sliderNext">
-                <i class="fa-solid fa-chevron-right"></i>
-              </button>
+              <button class="slider-arrow next" id="sliderNext"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
           </div>
         </div>
@@ -723,9 +560,7 @@
       <!-- ================================ PROJECT MODAL ================================ -->
       <div class="proj-modal-backdrop" id="projModalBackdrop">
         <div class="proj-modal" id="projModal">
-          <button class="proj-modal-close" id="projModalClose">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
+          <button class="proj-modal-close" id="projModalClose"><i class="fa-solid fa-xmark"></i></button>
           <div class="proj-modal-left">
             <div class="proj-screenshot-box" id="projScreenshots"></div>
           </div>
@@ -734,170 +569,121 @@
             <h2 class="proj-modal-title" id="projModalTitle"></h2>
             <p class="proj-modal-desc" id="projModalDesc"></p>
             <div class="proj-modal-skills" id="projModalSkills"></div>
-            <p class="proj-modal-meta">
-              <i class="fa-regular fa-calendar"></i>
-              <span id="projModalDate"></span>
-            </p>
-            <a
-              href="#"
-              id="projModalGithub"
-              target="_blank"
-              class="proj-modal-gh"
-              ><i class="fab fa-github"></i> View Code on GitHub</a
-            >
+            <p class="proj-modal-meta"><i class="fa-regular fa-calendar"></i> <span id="projModalDate"></span></p>
+            <a href="#" id="projModalGithub" target="_blank" class="proj-modal-gh"><i class="fab fa-github"></i> View Code on GitHub</a>
           </div>
         </div>
       </div>
 
       <!-- ================================ SERVICES ================================ -->
-      <section class="services-section" id="services">
+      <section class="services-section" id="services" >
         <h2 class="section-title" data-heading="Portfolio">My Services</h2>
 
         <div class="services-container">
-          <img
-            src="assets/Picture/service/6.png"
-            alt="My Services"
-            class="services-image"
-          />
+          <img src="assets/picture/service/6.png" alt="My Services" class="services-image" />
         </div>
       </section>
 
+    
       <!-- ================================ CONTACT ================================ -->
       <section id="contact" class="contact-section">
-        <h2 class="contact-title">Get in Touch 💬</h2>
-        <p class="contact-subtitle">
-          Feel free to reach out — I usually reply within a few hours!
-        </p>
+  <h2 class="contact-title">Get in Touch 💬</h2>
+  <p class="contact-subtitle">Feel free to reach out — I usually reply within a few hours!</p>
 
-        <div class="contact-info-grid">
-          <div class="info-card">
-            <i class="fas fa-map-marker-alt"></i>
-            <h3>Location</h3>
-            <p>Delhi, India</p>
-          </div>
+  <div class="contact-info-grid">
+    <div class="info-card">
+      <i class="fas fa-map-marker-alt"></i>
+      <h3>Location</h3>
+      <p>Delhi, India</p>
+    </div>
 
-          <div class="info-card">
-            <i class="fas fa-phone-alt"></i>
-            <h3>Phone</h3>
-            <p>+91 7838133442</p>
-          </div>
+    <div class="info-card">
+      <i class="fas fa-phone-alt"></i>
+      <h3>Phone</h3>
+      <p>+91 7838133442</p>
+    </div>
 
-          <div class="info-card">
-            <i class="fas fa-envelope"></i>
-            <h3>Email</h3>
-            <p>codetechabhay@gmail.com</p>
-          </div>
+    <div class="info-card">
+      <i class="fas fa-envelope"></i>
+      <h3>Email</h3>
+      <p>codetechabhay@gmail.com</p>
+    </div>
 
-          <div class="info-card">
-            <i class="fas fa-clock"></i>
-            <h3>Response Time</h3>
-            <p>Within 2–4 hours</p>
-          </div>
+    <div class="info-card">
+      <i class="fas fa-clock"></i>
+      <h3>Response Time</h3>
+      <p>Within 2–4 hours</p>
+    </div>
+  </div>
+
+  <div class="contact-links">
+    <a href="https://wa.me/917838133442?text=Hello%20Abhay,%20I%20saw%20your%20portfolio" target="_blank" class="contact-link">
+      <i class="fab fa-whatsapp"></i>
+      <span>WhatsApp</span>
+    </a>
+
+    <a href="https://www.linkedin.com/in/abhay-tripathi-8966972bb/" target="_blank" class="contact-link">
+      <i class="fab fa-linkedin"></i>
+      <span>LinkedIn</span>
+    </a>
+
+    <a href="https://github.com/AbhayTripathii" target="_blank" class="contact-link">
+      <i class="fab fa-github"></i>
+      <span>GitHub</span>
+    </a>
+  </div>
+</section>
+      
+
+        <footer class="site-footer">
+    <div class="footer-top">
+      <h2 class="footer-headline">Let's build something<br>great together.</h2>
+      <p class="footer-tagline">Open to freelance projects, collaborations &amp; full-time opportunities.</p>
+      <a href="#contact" class="footer-cta">Get in touch</a>
+    </div>
+
+    <div class="footer-main container">
+      <div class="footer-brand">
+        <img src="assets/Picture/1-logo.png" alt="Logo" class="footer-logo" />
+        <span class="footer-brand-name">Abhay Tripathi</span>
+        <p id="footer-quote" class="footer-quote"></p>
+        <div class="footer-socials">
+          <a href="https://wa.me/917838133442?text=Hello%20Abhay,%20I%20saw%20your%20portfolio" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.linkedin.com/in/abhay-tripathi-8966972bb/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/AbhayTripathii" target="_blank"><i class="fab fa-github"></i></a>
         </div>
+      </div>
 
-        <div class="contact-links">
-          <a
-            href="https://wa.me/917838133442?text=Hello%20Abhay,%20I%20saw%20your%20portfolio"
-            target="_blank"
-            class="contact-link"
-          >
-            <i class="fab fa-whatsapp"></i>
-            <span>WhatsApp</span>
-          </a>
-
-          <a
-            href="https://www.linkedin.com/in/abhay-tripathi-8966972bb/"
-            target="_blank"
-            class="contact-link"
-          >
-            <i class="fab fa-linkedin"></i>
-            <span>LinkedIn</span>
-          </a>
-
-          <a
-            href="https://github.com/AbhayTripathii"
-            target="_blank"
-            class="contact-link"
-          >
-            <i class="fab fa-github"></i>
-            <span>GitHub</span>
-          </a>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#work">Work</a>
         </div>
-      </section>
-
-      <footer class="site-footer">
-        <div class="footer-top">
-          <h2 class="footer-headline">
-            Let's build something<br />great together.
-          </h2>
-          <p class="footer-tagline">
-            Open to freelance projects, collaborations &amp; full-time
-            opportunities.
-          </p>
-          <a href="#contact" class="footer-cta">Get in touch</a>
+        <div class="footer-col">
+          <h4>More</h4>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
         </div>
+      </div>
+    </div>
 
-        <div class="footer-main container">
-          <div class="footer-brand">
-            <img
-              src="assets/Picture/1-logo.png"
-              alt="Logo"
-              class="footer-logo"
-            />
-            <span class="footer-brand-name">Abhay Tripathi</span>
-            <p id="footer-quote" class="footer-quote"></p>
-            <div class="footer-socials">
-              <a
-                href="https://wa.me/917838133442?text=Hello%20Abhay,%20I%20saw%20your%20portfolio"
-                target="_blank"
-                ><i class="fab fa-whatsapp"></i
-              ></a>
-              <a
-                href="https://www.linkedin.com/in/abhay-tripathi-8966972bb/"
-                target="_blank"
-                ><i class="fab fa-linkedin"></i
-              ></a>
-              <a href="https://github.com/AbhayTripathii" target="_blank"
-                ><i class="fab fa-github"></i
-              ></a>
-            </div>
-          </div>
+    <div class="footer-bottom container">
+      <p class="footer-copy">© 2025 Abhay Tripathi. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </footer>
 
-          <div class="footer-cols">
-            <div class="footer-col">
-              <h4>Explore</h4>
-              <a href="#home">Home</a>
-              <a href="#about">About</a>
-              <a href="#skills">Skills</a>
-              <a href="#work">Work</a>
-            </div>
-            <div class="footer-col">
-              <h4>More</h4>
-              <a href="#services">Services</a>
-              <a href="#contact">Contact</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="footer-bottom container">
-          <p class="footer-copy">© 2025 Abhay Tripathi. All rights reserved.</p>
-          <div class="footer-bottom-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Use</a>
-          </div>
-        </div>
-      </footer>
     </main>
     <!-- ================================ SCRIPTS ================================ -->
     <!-- GSAP first, then the page scripts -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
-      defer
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
-      defer
-    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
 
     <script src="shader.js" defer></script>
     <script src="script.js?v=4" defer></script>

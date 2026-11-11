@@ -1,5 +1,5 @@
 /* ============================================================
-   SCRIPT — Abhay Tripathi portfolio
+   Hey there this is Abhay and this is my portfolio which i've been updating over last 3 to 4 months you know as a coder you have to show something extraordinary to other peolpe to let them be jealous "hehehehehehe" well joke aside you can check my portfolio and if there anything that needed to be correct let me know!
    Sections: LOADER · NAVIGATION · SHARE · SCROLL · ANIMATIONS ·
              HERO · WORK (slider) · PROJECT MODAL · FOOTER
    ============================================================ */
@@ -17,7 +17,10 @@
   function scheduleHide() {
     if (hideScheduled || !pageLoaded) return;
     hideScheduled = true;
-    const remaining = Math.max(0, MIN_DISPLAY - (performance.now() - startTime));
+    const remaining = Math.max(
+      0,
+      MIN_DISPLAY - (performance.now() - startTime),
+    );
     setTimeout(() => loader.classList.add("hidden"), remaining + 200);
   }
 
@@ -38,12 +41,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const navClose = document.getElementById("nav-close");
   const navLinks = document.querySelectorAll(".nav-link");
 
-  navToggle?.addEventListener("click", () => sidebar.classList.add("show-sidebar"));
-  navClose?.addEventListener("click", () => sidebar.classList.remove("show-sidebar"));
+  navToggle?.addEventListener("click", () =>
+    sidebar.classList.add("show-sidebar"),
+  );
+  navClose?.addEventListener("click", () =>
+    sidebar.classList.remove("show-sidebar"),
+  );
 
   // Close the mobile menu when a link is tapped
   navLinks.forEach((link) => {
-    link.addEventListener("click", () => sidebar.classList.remove("show-sidebar"));
+    link.addEventListener("click", () =>
+      sidebar.classList.remove("show-sidebar"),
+    );
   });
 });
 
@@ -332,14 +341,17 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateSlider() {
     slides.forEach((slide, i) => {
       slide.classList.toggle("active", i === current);
-      slide.classList.toggle("peek", slides.length > 1 && i === (current + 1) % slides.length);
+      slide.classList.toggle(
+        "peek",
+        slides.length > 1 && i === (current + 1) % slides.length,
+      );
     });
     const activeSlide = slides[current];
     const offset = activeSlide ? activeSlide.offsetLeft : 0;
     track.style.transform = `translateX(-${offset}px)`;
-    dotsContainer.querySelectorAll(".dot").forEach((d, i) =>
-      d.classList.toggle("active", i === current),
-    );
+    dotsContainer
+      .querySelectorAll(".dot")
+      .forEach((d, i) => d.classList.toggle("active", i === current));
   }
 
   function applyFilter(filter) {
@@ -353,7 +365,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function setCategory(filter) {
-    catButtons.forEach((b) => b.classList.toggle("active", b.dataset.filter === filter));
+    catButtons.forEach((b) =>
+      b.classList.toggle("active", b.dataset.filter === filter),
+    );
     if (workDesc && categoryInfo[filter]) {
       workDesc.textContent = categoryInfo[filter].desc;
     }
@@ -408,7 +422,8 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   // Figma links for the two UI/UX projects.
   const FIGMA_LOGIN = "https://www.figma.com/design/mBUgN5ZVRgJp8fkwyZn7y7/";
-  const FIGMA_FRESHMART = "https://www.figma.com/design/mBUgN5ZVRgJp8fkwyZn7y7/Shared-file?node-id=2005-24";
+  const FIGMA_FRESHMART =
+    "https://www.figma.com/design/mBUgN5ZVRgJp8fkwyZn7y7/Shared-file?node-id=2005-24";
 
   // Project data. type "design" = Figma project (embed + link), otherwise a code project.
   const projectsData = {
@@ -420,9 +435,9 @@ document.addEventListener("DOMContentLoaded", () => {
       date: "Jan 2025",
       github: "https://www.github.com",
       screenshots: [
-        "assets/Picture/amazon/1.png",
-        "assets/Picture/amazon/2.png",
-        "assets/Picture/amazon/3.png",
+        "assets/picture/amazon/1.png",
+        "assets/picture/amazon/2.png",
+        "assets/picture/amazon/3.png",
       ],
     },
     netflix: {
@@ -433,10 +448,10 @@ document.addEventListener("DOMContentLoaded", () => {
       date: "Feb 2025",
       github: "https://www.github.com",
       screenshots: [
-        "assets/Picture/netflix/1.png",
-        "assets/Picture/netflix/2.png",
-        "assets/Picture/netflix/3.png",
-        "assets/Picture/netflix/4.png",
+        "assets/picture/netflix/1.png",
+        "assets/picture/netflix/2.png",
+        "assets/picture/netflix/3.png",
+        "assets/picture/netflix/4.png",
       ],
     },
     burger: {
@@ -447,14 +462,14 @@ document.addEventListener("DOMContentLoaded", () => {
       date: "Aug 2025",
       github: "https://www.github.com",
       screenshots: [
-        "assets/Picture/burger/1.png",
-        "assets/Picture/burger/2.png",
-        "assets/Picture/burger/3.png",
-        "assets/Picture/burger/4.png",
-        "assets/Picture/burger/5.png",
-        "assets/Picture/burger/6.png",
-        "assets/Picture/burger/7.png",
-        "assets/Picture/burger/8.png",
+        "assets/picture/burger/1.png",
+        "assets/picture/burger/2.png",
+        "assets/picture/burger/3.png",
+        "assets/picture/burger/4.png",
+        "assets/picture/burger/5.png",
+        "assets/picture/burger/6.png",
+        "assets/picture/burger/7.png",
+        "assets/picture/burger/8.png",
       ],
     },
     attend: {
@@ -465,8 +480,8 @@ document.addEventListener("DOMContentLoaded", () => {
       date: "2026",
       github: "https://github.com/AbhayTripathii/attendance-app",
       screenshots: [
-        "assets/Picture/attend/1.png",
-        "assets/Picture/attend/2.png",
+        "assets/picture/attend/1.png",
+        "assets/picture/attend/2.png",
       ],
     },
     loginUI: {
